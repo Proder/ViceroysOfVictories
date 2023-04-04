@@ -11,3 +11,241 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.adminLanding{
+  background-color: #2e2e30;
+  /* filter: blur(1px); */
+  color: #3B3B3B;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content:spa;
+  align-items: center;
+}
+
+/* CSS */
+.button-28 {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #faf6f6;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 30%;
+  will-change: transform;
+  z-index: 100;
+  margin-left: 10%;
+  margin-right: 7%;
+}
+
+.button-28:disabled {
+  pointer-events: none;
+}
+
+.button-28:hover {
+  color: #fff;
+  background-color: #1A1A1A;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.button-28:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+.link{
+  text-decoration: none;
+  color: white; 
+  padding: 5px;
+  margin: 3px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  /* font-family: "Montserrat", "Merriweather"; */
+  /* font-size: 100%; */
+  vertical-align: bottom;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #2e2e30;
+}
+
+section {
+  margin: 0 auto;
+  width: 68%;
+}
+
+.heading {
+  font-family: "Montserrat";
+  font-size: 65px;
+  color: #ffffff;
+  padding-top: 50px;
+}
+
+.heading:after {
+  content: "";
+  display: block;
+  width: 38%;
+  padding-top: 20px;
+  border-bottom: 10px solid #d02035;
+}
+
+.details {
+  margin-top: 3vh;
+  margin-left: 4px;
+  position: relative;
+}
+
+.paragraph {
+  font-family: "Merriweather";
+  font-size: 25px;
+  color: #f2f2f2;
+  margin-left: 5px;
+  /* line-height: 10mm; */
+}
+
+.input-form {
+  display: flex;
+  justify-content:space-between;
+  flex-wrap: wrap;
+  margin-top: 10vh;
+  justify-items: center;
+}
+
+.input-field {
+  font-family: "Merriweather";
+  font-style: italic;
+  font-size: 16px;
+  padding: 15px;
+  width: 25%;
+  margin:20px;
+  max-width: 50%;
+  border-radius:5px;
+}
+
+
+
+.select-field {
+  font-family: "Merriweather";
+  font-style: italic;
+  font-size: 16px;
+  padding: 15px;
+  color: gray;
+  width: 25%;
+  max-width: 50%;
+  margin:20px;
+  box-sizing: border-box;
+  border-radius:5px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4IiB2aWV3Qm94PSIwIDAgMjkyLjM2MiAyOTIuMzYyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyOTIuMzYyIDI5Mi4zNjI7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBkPSJNMjg2LjkzNSw2OS4zNzdjLTMuNjE0LTMuNjE3LTcuODk4LTUuNDI0LTEyLjg0OC01LjQyNEgxOC4yNzRjLTQuOTUyLDAtOS4yMzMsMS44MDctMTIuODUsNS40MjQgICBDMS44MDcsNzIuOTk4LDAsNzcuMjc5LDAsODIuMjI4YzAsNC45NDgsMS44MDcsOS4yMjksNS40MjQsMTIuODQ3bDEyNy45MDcsMTI3LjkwN2MzLjYyMSwzLjYxNyw3LjkwMiw1LjQyOCwxMi44NSw1LjQyOCAgIHM5LjIzMy0xLjgxMSwxMi44NDctNS40MjhMMjg2LjkzNSw5NS4wNzRjMy42MTMtMy42MTcsNS40MjctNy44OTgsNS40MjctMTIuODQ3QzI5Mi4zNjIsNzcuMjc5LDI5MC41NDgsNzIuOTk4LDI4Ni45MzUsNjkuMzc3eiIgZmlsbD0iIzAwMDAwMCIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo="),
+    linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+  background-repeat: no-repeat, repeat;
+  background-position: right 0.7em top 50%, 0 0;
+  background-size: 0.65em auto, 100%;
+}
+
+.arrowed {
+  position: relative;
+  bottom: 17px;
+  right: 19px;
+}
+
+.button-user {
+  font-family: "Merriweather";
+  font-weight: bold;
+  font-size: 20px;
+  padding: 14px;
+  margin-top: 50px;
+  width: 50%;
+  margin-left: 25%;
+  background-color: #d02035;
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 841px) {
+  
+  .heading {
+    font-size: 28px;
+  }
+  .details {
+    margin-top: 28px;
+  }
+  .paragraph {
+    font-size: 14px;
+    line-height: 7mm;
+  }
+  .input-field {
+    font-size: 13px;
+    width: 100%;
+  }
+  .button {
+    font-size: 13px;
+  }
+  section {
+    width: 90%;
+  }
+  .select-div {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .select-field {
+    width: 100%;
+    font-size: 13px;
+  }
+  .arrowed {
+    display: none !important;
+  
+}
+}
+
+@media screen and (min-width: 841px) and (max-width: 1000px) {
+  section {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .heading {
+    font-size: 50px;
+  }
+  .details {
+    margin-top: 50px;
+    line-height: 7mm;
+  }
+  .input-field {
+    width: 50%;
+  }
+  .select-div {
+    width: 50%;
+  }
+  .select-field {
+    width: 96%;
+  }
+}
+
+
