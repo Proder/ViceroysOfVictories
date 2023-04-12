@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "./dash.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate } from "react-router-dom";
 
 export default function Dash() {
   const [isLogin, setIsLogin] = useState(true);
-  const [login,setLogin] = useState(false);
+  const [login, setLogin] = useState(false);
+  const [user, setUser] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleAdminClick = () => {
     if (!isLogin) {
@@ -32,6 +34,7 @@ export default function Dash() {
   };
 
   const handleAdminSubmit = (e) => {
+    setIsLoading(true);
     e.preventDefault();
     console.log(formData);
 
@@ -56,18 +59,26 @@ export default function Dash() {
     )
       .then((response) => response.json())
       .then((result) => {
-        console.log(result.message) 
-        if(result.message === "Login done!"){
-        sessionStorage.setItem("authToken", result.token);
-        setLogin(true);
-        }else{
-          setTimeout(()=>alert("Invalid Credentials"),500);
+        console.log(result.message);
+        if (result.message === "Login done!") {
+          sessionStorage.setItem("authToken", result.token);
+          setLogin(true);
+          setUser("admin");
+        } else {
+          setIsLoading(false);
+          setTimeout(() => alert("Invalid Credentials"), 500);
         }
       })
       .catch((error) => console.log("error", error));
+    setLogin(false);
+    setFormData({
+      email: "",
+      password: "",
+    });
   };
 
   const handlePlayerSubmit = (e) => {
+    setIsLoading(true);
     e.preventDefault();
     console.log(formData);
 
@@ -91,25 +102,35 @@ export default function Dash() {
       requestOptions
     )
       .then((response) => response.json())
-      .then((result) =>{ 
-        if(result.message==="Login done!"){
+      .then((result) => {
+        if (result.message === "Login done!") {
           sessionStorage.setItem("playerAuth", result.token);
           setLogin(true);
-          }else{
-            setTimeout(()=>alert("Invalid Credentials"),500);
-            }})
+          setUser("player");
+        } else {
+          setIsLoading(false);
+          setTimeout(() => alert("Invalid Credentials"), 500);
+        }
+      })
       .catch((error) => console.log("error", error));
+    setLogin(false);
+    setFormData({
+      email: "",
+      password: "",
+    });
   };
 
-
   return (
-    <div className="dash-container">
+    <div>
+      {!login ? ( 
+        <div>
+          {!isLoading ? (<div className="dash-container">
       <div className="left">
         <div className="title-one">
           <h1>Viceroys of</h1>
         </div>
         <div className="title-two">
-          <h2>VICTORY</h2>
+          <h2>VICTORIES</h2>
         </div>
       </div>
       <div className="right">
@@ -120,46 +141,13 @@ export default function Dash() {
             </h2>
             <div className="form-holder">
               <form onSubmit={handleAdminSubmit} id="adminform">
-              <input
-                type="email"
-                className="input"
-                placeholder="Email"
-                name="email"
-                required
-                onChange={handleChange}
-                value={formData.email}
-              />
-              <input
-                type="password"
-                className="input"
-                placeholder="Password"
-                name="password"
-                required
-                onChange={handleChange}
-                value={formData.password}
-                />
-                </form>
-              </div>
-            <button className="submit-btn" type="submit" form="adminform">
-              <NavLink to="/AdminDash" className="link">
-                Sign In
-              </NavLink>
-              
-            </button>
-          </div>
-          <div className={`login ${isLogin ? "slide-up" : ""}`}>
-            <div className="center">
-              <h2 className="form-title" id="login" onClick={handlePlayerClick}>
-                Player
-              </h2>
-              <div className="form-holder">
-                <form onSubmit={handlePlayerSubmit}>
                 <input
                   type="email"
                   className="input"
                   placeholder="Email"
                   name="email"
                   required
+                  autoComplete="off"
                   onChange={handleChange}
                   value={formData.email}
                 />
@@ -169,18 +157,63 @@ export default function Dash() {
                   placeholder="Password"
                   name="password"
                   required
+                  autoComplete="off"
                   onChange={handleChange}
                   value={formData.password}
                 />
               </form>
+            </div>
+            <button className="submit-btn" type="submit" form="adminform">
+              Sign In
+            </button>
+          </div>
+
+          <div className={`login ${isLogin ? "slide-up" : ""}`}>
+            <div className="center">
+              <h2 className="form-title" id="login" onClick={handlePlayerClick}>
+                PLAYER
+              </h2>
+              <div className="form-holder">
+                <form onSubmit={handlePlayerSubmit} id="player-form">
+                  <input
+                    type="email"
+                    className="input"
+                    placeholder="Email"
+                    name="email"
+                    required
+                    autoComplete="off"
+                    onChange={handleChange}
+                    value={formData.email}
+                  />
+                  <input
+                    type="password"
+                    className="input"
+                    placeholder="Password"
+                    name="password"
+                    required
+                    autoComplete="off"
+                    onChange={handleChange}
+                    value={formData.password}
+                  />
+                </form>
               </div>
-              <button className="submit-btn" type="submit">
-                <NavLink to="/PlayerDash" className='link'>Sign In</NavLink>
+              <button className="submit-btn" type="submit" form="player-form">
+                  Sign In
               </button>
             </div>
           </div>
         </div>
       </div>
+    </div>) : (<div className="loader"></div>)}
+          </div>
+      ) : (
+        user === "admin" ? (
+      <Navigate to = "/AdminDash" replace={true}/>
+    )
+    : (
+      <Navigate to = "/PlayerDash" replace={true}/>
+    )
+      )}
     </div>
   );
 }

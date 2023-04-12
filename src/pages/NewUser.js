@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
+import { Navigate } from "react-router-dom";
 
 export default function NewUser() {
   const [formData, setFormData] = useState({
@@ -68,6 +69,8 @@ export default function NewUser() {
   };
 
   return (
+    <div>
+      {sessionStorage.length === 0 ? (<Navigate to ="/" replace />):(
     <div className="container">
       <Navbar />
       <div className="details" id="info">
@@ -82,6 +85,8 @@ export default function NewUser() {
             id="name"
             placeholder="Name"
             className="input-field"
+            autoComplete="off"
+            required
             value={formData.name}
             onChange={handleInputChange}
           />
@@ -90,6 +95,8 @@ export default function NewUser() {
             id="studentid"
             placeholder="Student ID"
             className="input-field"
+            autoComplete="off"
+            required
             value={formData.studentid}
             onChange={handleInputChange}
           />
@@ -98,6 +105,8 @@ export default function NewUser() {
             id="email"
             placeholder="Email"
             className="input-field"
+            autoComplete="off"
+            required
             value={formData.email}
             onChange={handleInputChange}
           />
@@ -106,6 +115,8 @@ export default function NewUser() {
             id="password"
             placeholder="Password"
             className="input-field"
+            autoComplete="off"
+            required
             value={formData.password}
             onChange={handleInputChange}
           />
@@ -115,6 +126,8 @@ export default function NewUser() {
             id="height"
             placeholder="Height"
             className="input-field-extras"
+            autoComplete="off"
+            required
             value={formData.height}
             onChange={handleInputChange}
           />
@@ -124,6 +137,8 @@ export default function NewUser() {
             placeholder="Weight"
             className="input-field-extras"
             value={formData.weight}
+            autoComplete="off"
+            required
             onChange={handleInputChange}
           />
           <select
@@ -145,6 +160,8 @@ export default function NewUser() {
         </form>
         </div>
       </div>
+    </div>
+    )}
     </div>
   );
 }
