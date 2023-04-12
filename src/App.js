@@ -4,7 +4,8 @@ import Dash from "./pages/Dash";
 import AdminLanding from "./pages/adminLanding";
 import AdminDash from "./pages/AdminDash";
 import NewUser from "./pages/NewUser";
-import Sports from "./pages/Sports";
+import PlayerDisplay from "./pages/PlayerDisplay";
+import PlayerDash from "./pages/PlayerDash";
 
 function App() {
   return (
@@ -12,10 +13,10 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<Dash />} />
-          <Route path="/adminLanding" element={<AdminLanding />} />
-          <Route path="/Sports" element={<Sports />} />
+          <Route path="/PlayerDash" element={<PlayerDash />} />
           <Route path="/AdminDash" element={<AdminDash />} />
           <Route path="/NewUser" element={<NewUser />} />
+          <Route path="/PlayerDisplay" element={<PlayerDisplay />} />
         </Routes>
       </Router>
     </div>

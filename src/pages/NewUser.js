@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import Navbar from "../components/Navbar";
 
 export default function NewUser() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
+    studentid:"",
     height: "",
     weight: "",
     gender: "",
@@ -23,13 +25,14 @@ export default function NewUser() {
 
     if (email.match(format)) {
       var myHeaders = new Headers();
-      myHeaders.append("authToken", localStorage.getItem("authToken"));
+      myHeaders.append("authToken", sessionStorage.getItem("authToken"));
       myHeaders.append("Content-Type", "application/json");
 
       var raw = JSON.stringify({
         name: formData.name,
         email: formData.email,
         password: formData.password,
+        studentid:formData.studentid,
         gender: formData.gender,
         height: formData.height,  
         weight: formData.weight
@@ -48,34 +51,46 @@ export default function NewUser() {
       )
         .then((response) => response.json())
         .then((result) => console.log(result))
-        // .catch(error => console.log('error', error));
-        .then((data) => {
+        .then((result) => {
+          window.alert(`New Player ${result.name} Created`);
           setFormData({
             name: "",
             email: "",
             password: "",
+            studentid:"",
             height: "",
             weight: "",
             gender: "",
           });
-        });
+        })
+        .catch(error => console.log('error', error));
     }
   };
 
   return (
-    <div>
-      <h4 className="heading">Create a New Player</h4>
+    <div className="container">
+      <Navbar />
       <div className="details" id="info">
+      <h4 className="heading">Create a New Player</h4>
         <p className="paragraph">
           Enter the basic credentials of the player to be created
         </p>
-        <form className="details input-form">
+        <div className='input-form-container'>
+        <form className="input-form">
           <input
             type="text"
             id="name"
             placeholder="Name"
             className="input-field"
             value={formData.name}
+            onChange={handleInputChange}
+          />
+          <input
+            type="text"
+            id="studentid"
+            placeholder="Student ID"
+            className="input-field"
+            value={formData.studentid}
             onChange={handleInputChange}
           />
           <input
@@ -94,11 +109,12 @@ export default function NewUser() {
             value={formData.password}
             onChange={handleInputChange}
           />
+          
           <input
             type="text"
             id="height"
             placeholder="Height"
-            className="input-field"
+            className="input-field-extras"
             value={formData.height}
             onChange={handleInputChange}
           />
@@ -106,7 +122,7 @@ export default function NewUser() {
             type="text"
             id="weight"
             placeholder="Weight"
-            className="input-field"
+            className="input-field-extras"
             value={formData.weight}
             onChange={handleInputChange}
           />
@@ -127,6 +143,7 @@ export default function NewUser() {
             CREATE
           </button>
         </form>
+        </div>
       </div>
     </div>
   );

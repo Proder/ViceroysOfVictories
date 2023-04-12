@@ -15,7 +15,7 @@ body {
   background: #2e2e30;
 }
 
-body .container-sports {
+.container-sports {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +24,7 @@ body .container-sports {
   margin: 40px 0;
 }
 
-body .container-sports .card {
+.card {
   position: relative;
   min-width: 270px;
   height: 440px;
@@ -33,12 +33,13 @@ body .container-sports .card {
     5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   margin: 15px;
-    margin-top: 10%;
+  width: 20%;
+  margin-top: 10%;
   transition: 0.5s;
 }
 
 
-body .container-sports .card .box {
+.box {
   position: absolute;
   top: 20px;
   left: 20px;
@@ -47,6 +48,7 @@ body .container-sports .card .box {
   background: #2a2b2f;
   border-radius: 15px;
   display: flex;
+  
   justify-content: center;
   align-items: center;
   overflow: hidden;

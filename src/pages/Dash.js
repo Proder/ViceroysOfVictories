@@ -3,7 +3,8 @@ import "./dash.css";
 import { NavLink } from "react-router-dom";
 
 export default function Dash() {
-  const [isLogin, setIsLogin] = useState(true); 
+  const [isLogin, setIsLogin] = useState(true);
+  const [login,setLogin] = useState(false);
 
   const handleAdminClick = () => {
     if (!isLogin) {
@@ -21,6 +22,7 @@ export default function Dash() {
     email: "",
     password: "",
   });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
@@ -53,7 +55,15 @@ export default function Dash() {
       requestOptions
     )
       .then((response) => response.json())
-      .then((result) => localStorage.setItem("authToken", result.token))
+      .then((result) => {
+        console.log(result.message) 
+        if(result.message === "Login done!"){
+        sessionStorage.setItem("authToken", result.token);
+        setLogin(true);
+        }else{
+          setTimeout(()=>alert("Invalid Credentials"),500);
+        }
+      })
       .catch((error) => console.log("error", error));
   };
 
@@ -61,12 +71,8 @@ export default function Dash() {
     e.preventDefault();
     console.log(formData);
 
-    var headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
-    headers.append('Access-Control-Allow-Credentials', 'true');
-  
-    headers.append('GET', 'POST', 'OPTIONS');
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
       email: formData.email,
@@ -75,7 +81,7 @@ export default function Dash() {
 
     var requestOptions = {
       method: "POST",
-      headers: headers,
+      headers: myHeaders,
       body: raw,
       redirect: "follow",
     };
@@ -85,7 +91,13 @@ export default function Dash() {
       requestOptions
     )
       .then((response) => response.json())
-      .then((result) => localStorage.setItem("authToken", result.token))
+      .then((result) =>{ 
+        if(result.message==="Login done!"){
+          sessionStorage.setItem("playerAuth", result.token);
+          setLogin(true);
+          }else{
+            setTimeout(()=>alert("Invalid Credentials"),500);
+            }})
       .catch((error) => console.log("error", error));
   };
 
@@ -107,11 +119,13 @@ export default function Dash() {
               ADMIN
             </h2>
             <div className="form-holder">
+              <form onSubmit={handleAdminSubmit} id="adminform">
               <input
                 type="email"
                 className="input"
                 placeholder="Email"
                 name="email"
+                required
                 onChange={handleChange}
                 value={formData.email}
               />
@@ -120,14 +134,17 @@ export default function Dash() {
                 className="input"
                 placeholder="Password"
                 name="password"
+                required
                 onChange={handleChange}
                 value={formData.password}
-              />
-            </div>
-            <button className="submit-btn" onClick={handleAdminSubmit}>
+                />
+                </form>
+              </div>
+            <button className="submit-btn" type="submit" form="adminform">
               <NavLink to="/AdminDash" className="link">
                 Sign In
               </NavLink>
+              
             </button>
           </div>
           <div className={`login ${isLogin ? "slide-up" : ""}`}>
@@ -136,11 +153,13 @@ export default function Dash() {
                 Player
               </h2>
               <div className="form-holder">
+                <form onSubmit={handlePlayerSubmit}>
                 <input
                   type="email"
                   className="input"
                   placeholder="Email"
                   name="email"
+                  required
                   onChange={handleChange}
                   value={formData.email}
                 />
@@ -149,12 +168,14 @@ export default function Dash() {
                   className="input"
                   placeholder="Password"
                   name="password"
+                  required
                   onChange={handleChange}
                   value={formData.password}
                 />
+              </form>
               </div>
-              <button className="submit-btn" onClick={handlePlayerSubmit}>
-                <NavLink to="/Sports" className='link'>Sign In</NavLink>
+              <button className="submit-btn" type="submit">
+                <NavLink to="/PlayerDash" className='link'>Sign In</NavLink>
               </button>
             </div>
           </div>

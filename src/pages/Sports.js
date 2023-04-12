@@ -2,8 +2,24 @@ import React from "react";
 import "./player.css"
 
 export default function Sports() {
+
+  const handleCricket = () => {
+    console.log("clicked");
+  };
+
+  const handleFootball = () => {
+    console.log("clicked");
+  };
+
+  const handleTT = () => {
+    console.log("clicked");
+  };
+
+  const handleBadminton = () => {
+    console.log("clicked");
+  };
   return (
-    <>
+    
       <div class="container-sports">
         <div class="card">
           <div class="box">
@@ -13,9 +29,10 @@ export default function Sports() {
                 alt=""
                 width="200px"
                 height="250px"
+                
               />
               <h1>Cricket</h1>
-              <a href="#">Explore</a>
+              <a href="/Tournaments" onClick={handleCricket}>Explore</a>
             </div>
           </div>
         </div>
@@ -30,7 +47,7 @@ export default function Sports() {
                 height="250px"
               />
               <h1>Football</h1>
-              <a href="#">Explore</a>
+              <a href="/Tournaments" onClick={handleFootball}>Explore</a>
             </div>
           </div>
         </div>
@@ -45,7 +62,7 @@ export default function Sports() {
                 height="250px"
               />
               <h1>Table Tennis</h1>
-              <a href="#">Explore</a>
+              <a href="/Tournaments" onClick={handleTT}>Explore</a>
             </div>
           </div>
         </div>
@@ -60,11 +77,11 @@ export default function Sports() {
                 height="250px"
               />
               <h1>Badminton</h1>
-              <a href="#">Explore</a>
+              <a href="/Tournaments" onClick={handleBadminton}>Explore</a>
             </div>
           </div>
         </div>
       </div>
-    </>
+    
   );
 }

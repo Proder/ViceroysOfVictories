@@ -1,12 +1,15 @@
 import Card from "./Card";
 import React, { useState, useEffect } from "react";
+import "../pages/AdminDash.css";
+// import PlayerDisplay from "../pages/PlayerDisplay";
 
 export default function Cardlist() {
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(function () {
     var myHeaders = new Headers();
-    myHeaders.append("authToken", localStorage.getItem("authToken"));
+    myHeaders.append("authToken", sessionStorage.getItem("authToken"));
     var requestOptions = {
       method: "GET",
       headers: myHeaders,
@@ -17,20 +20,26 @@ export default function Cardlist() {
       requestOptions
     )
       .then((response) => response.json())
-      .then((result) => setCards(result))
+      .then((result) => {
+        setCards(result);
+        setIsLoading(false);
+      })
       .catch((error) => console.log("error", error));
   }, []);
+
   return (
-    <section class="hero-section">
-    <div class="card-grid">
-        {cards.map((card) => (
-            <Card
-                email={card.email}
-                name={card.name}
-            />
-        ))}
-        
+    <div>
+      {!isLoading ? (
+        <section class="hero-section">
+          <div class="card-grid">
+            {cards.map((card) => (
+              <Card cardid={card._id} email={card.email} name={card.name} />
+            ))}
+          </div>
+        </section>
+      ) : (
+        <div className="loader"></div>
+      )}
     </div>
-    </section>
   );
 }
