@@ -72,6 +72,21 @@
           justify-content: space-between;
 
       }
+
+      .header-text{
+        background-image:linear-gradient(to right, rgb(42, 178, 223), rgb(227, 190, 2));
+        background-clip: text;
+        color: transparent;
+      }
+      /* .navText {
+        animation: color-change 1.5s infinite;
+      }
+      
+      @keyframes color-change {
+        0% { color: rgb(42, 178, 223); }
+        50% { color: rgb(227, 190, 2);}
+        100% { color: rgb(42, 178, 223); }
+      } */
     
   
     .hero-section{
@@ -160,7 +175,7 @@
       
     .loader {
       border: 16px solid #f3f3f3; /* Light grey */
-      border-top: 16px solid #3498db; /* Blue */
+      border-top: 16px solid #F6B306; /* Blue */
       border-radius: 50%;
       width: 120px;
       height: 120px;
@@ -168,7 +183,7 @@
       margin: 0 auto;
     /* arrange the loading spinner at the center of the page */
       top: 35vh;
-      animation: spin 2s linear infinite;
+      animation: spin 1s linear infinite;
     }
     
     @keyframes spin {

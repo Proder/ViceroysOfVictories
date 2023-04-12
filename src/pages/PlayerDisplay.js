@@ -64,7 +64,7 @@ export default function PlayerDisplay() {
 
   return (
     <div>
-      {sessionStorage.length === 0 ? (<Navigate to ="/" replace />):(
+      {sessionStorage.length === 0 ? (<Navigate to ="/" replace={true} />):(
     <div className="container">
     <Navbar />
     {isDataLoaded ? (

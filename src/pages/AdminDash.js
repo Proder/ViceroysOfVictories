@@ -9,7 +9,7 @@ import Navbar from "../components/Navbar";
 export default function AdminDash() {
   return (
     <div>
-      {sessionStorage.length === 0 ? (<Navigate to ="/" replace />):(
+      {sessionStorage.length === 0 ? (<Navigate to ="/" replace={true} />):(
       <div class="container">
         <Navbar />
         <div>

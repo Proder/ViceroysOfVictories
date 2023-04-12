@@ -4,7 +4,7 @@
     left: 0;
     position: absolute;
     height: 100%;
-    background:rgb(53, 50, 50)  ;
+    background:rgba(44, 44, 44, 0.155)  ;
 }
 .right{
     background-color: #1E1C1A;
@@ -52,7 +52,7 @@ color: #06E7F6;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     margin-left: 28%;
     margin-top: 23%;
-    z-index: 100;
+    z-index: 1000;
 }
 .form-structor::after {
   content: "";

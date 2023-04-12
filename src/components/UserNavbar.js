@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 export default function Navbar() {
   const handleLogOut = () => {
     var myHeaders = new Headers();
-    myHeaders.append("authToken", sessionStorage.getItem("authToken"));
+    myHeaders.append("playerAuth", sessionStorage.getItem("playerAuth"));
 
     var requestOptions = {
       method: "GET",
@@ -14,14 +14,14 @@ export default function Navbar() {
     };
 
     fetch(
-      "https://easy-teal-dibbler-cape.cyclic.app/admin/logout",
+      "https://vov.cyclic.app/player/logout",
       requestOptions
     )
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
 
-      sessionStorage.removeItem("authToken");
+      sessionStorage.removeItem("playerAuth");
 
   };
   return (
@@ -31,11 +31,8 @@ export default function Navbar() {
           <h1 className="navText">Viceroys of Victories</h1>
         </div>
         <div class="header-menu">
-          <NavLink to="/AdminDash" className="link">
+          <NavLink to="/PlayerDash" className="link">
             Home
-          </NavLink>
-          <NavLink to="/NewUser" className="link">
-            Create New Player
           </NavLink>
           <NavLink to="/" className="link" onClick={handleLogOut}>
             Logout
