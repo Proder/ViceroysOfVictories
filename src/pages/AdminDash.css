@@ -39,7 +39,7 @@
       flex-direction: column;
       scroll-behavior: smooth;
       /* background-color: #2e2e30; */
-      padding: 0 30px;
+      padding: 0 20px;
       overflow-y: auto;
       overflow-x: hidden;
       position: relative;
@@ -51,7 +51,7 @@
       align-items: center;
       padding: 10px 3px;
       height: 11%;
-      width: 100%;
+      width: 100vw;
       white-space: nowrap;
       flex-shrink: 0;
       font-weight: 600;
@@ -319,7 +319,13 @@ section.profile-card article .info div span:nth-of-type(2) {
   height: 80vh;
   position: absolute;
   margin-top: 12vh;
+  overflow:scroll;
 }
+.right-profile::-webkit-scrollbar{
+  display: none;
+}
+
+
 
 .button-container {
   display: flex;
@@ -331,6 +337,9 @@ section.profile-card article .info div span:nth-of-type(2) {
   margin-right: 12px;
   background-color: #eeeeee2b;
   border-radius: 20px 20px 20px 20px;
+  position: sticky;
+
+  overflow: hidden;
 }
 
 .button-container button {
@@ -383,8 +392,17 @@ td ,tr{
   padding: auto;
 }
 
+.extra-stats{
+  border: 5px solid rgba(255, 255, 255, 0.688);
+  margin-left: auto;
+  width: 80%;
+  margin-right: 12px;
+  margin-top: 10%;
+  padding: auto;
+}
+
 .error-msg{
-  color: red;
+  color: #dfb91f;
   font-size: 32px;
   margin-top: 20%;
   margin-left: 45%;
@@ -392,4 +410,27 @@ td ,tr{
   border-radius: 20px 20px 20px 20px;
   padding: 20px;
   width: 36vh;
+}
+
+.container-display{
+  overflow: scroll;
+}
+.container-display::-webkit-scrollbar{
+  display: none;
+}
+
+/* Add matches button CSS */
+.addMatch{
+  padding: 20px;
+
+}
+
+.addbutton{
+  padding: 10px 20px;
+  border-radius: 70%;
+  font-weight: 90px;
+  font-size: 40px;
+}
+.addbutton:hover{
+  color: #dfb91f;
 }
