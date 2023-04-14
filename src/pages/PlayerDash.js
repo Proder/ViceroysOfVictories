@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./AdminDash.css";
 import Navbar from "../components/UserNavbar";
-import { useLocation } from "react-router-dom";
-import { Navigate } from "react-router-dom";
-
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function PlayerDash() {
   const [playerData, setPlayerData] = useState(null);
@@ -11,7 +9,7 @@ export default function PlayerDash() {
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("cricket");
   const [sportsData, setSportsData] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     var myHeaders = new Headers();
     myHeaders.append("playerAuth", sessionStorage.getItem("playerAuth"));
@@ -38,6 +36,24 @@ export default function PlayerDash() {
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
+  };
+
+  const handleAddClick = () => {
+    switch (activeTab) {
+      case "cricket":
+        return navigate("/CRICKET");
+        break;
+      case "football":
+        return navigate("/Football");
+        break;
+
+      case "badminton":
+        return navigate("/Badminton");
+        break;
+      case "tt":
+        return navigate("/TT");
+        break;
+    }
   };
 
   useEffect(() => {
@@ -140,37 +156,59 @@ export default function PlayerDash() {
                   {activeTab === "cricket" && (
                     <div className="cricket">
                       {sportsData.length === 0 ? (
-                        <h1 className="error-msg">No Data Found</h1>
+                        <>
+                          <h1 className="error-msg">No Data Found</h1>
+                          <div className="addMatchNO">
+                            <button
+                              title="Add Match"
+                              className="addbuttonNO"
+                              onClick={handleAddClick}
+                            >
+                              Add Match
+                            </button>
+                          </div>
+                        </>
                       ) : (
                         <>
-                          <table className="stats">
-                            <thead>
-                              <tr>
-                                <th>MyTeam</th>
-                                <th>Score 1</th>
-                                <th>Opponent</th>
-                                <th>Score 2</th>
-                                <th>Winner</th>
-                                <th>Runs</th>
-                                <th>Wickets</th>
-                                <th>Tournament Type</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {sportsData.map((cricket) => (
-                                <tr key={cricket._id}>
-                                  <td>{cricket.t1}</td>
-                                  <td>{cricket.s1}</td>
-                                  <td>{cricket.t2}</td>
-                                  <td>{cricket.s2}</td>
-                                  <td>{cricket.wt}</td>
-                                  <td>{cricket.run}</td>
-                                  <td>{cricket.wicket}</td>
-                                  <td>{cricket.tot}</td>
+                          <div className="stats-container">
+                            <table className="stats">
+                              <thead>
+                                <tr>
+                                  <th>MyTeam</th>
+                                  <th>Score 1</th>
+                                  <th>Opponent</th>
+                                  <th>Score 2</th>
+                                  <th>Winner</th>
+                                  <th>Runs</th>
+                                  <th>Wickets</th>
+                                  <th>Tournament Type</th>
                                 </tr>
-                              ))}
-                            </tbody>
-                          </table>
+                              </thead>
+                              <tbody>
+                                {sportsData.map((cricket) => (
+                                  <tr key={cricket._id}>
+                                    <td>{cricket.t1}</td>
+                                    <td>{cricket.s1}</td>
+                                    <td>{cricket.t2}</td>
+                                    <td>{cricket.s2}</td>
+                                    <td>{cricket.wt}</td>
+                                    <td>{cricket.run}</td>
+                                    <td>{cricket.wicket}</td>
+                                    <td>{cricket.tot}</td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                          <div className="addMatch">
+                            <button
+                              title="Add Match"
+                              className="addbutton"
+                              onClick={handleAddClick}
+                            >
+                              +
+                            </button>
+                          </div>
                           <div className="extra-comp">
                             <table className="extra-stats">
                               <thead>
@@ -180,10 +218,10 @@ export default function PlayerDash() {
                                 </tr>
                               </thead>
                               <tbody>
-                              <tr >
-                                    <td>{playerData[2].run}</td>
-                                    <td>{playerData[2].wicket}</td>
-                                  </tr>
+                                <tr>
+                                  <td>{playerData[2].run}</td>
+                                  <td>{playerData[2].wicket}</td>
+                                </tr>
                               </tbody>
                             </table>
                           </div>
@@ -195,36 +233,58 @@ export default function PlayerDash() {
                   {activeTab === "badminton" && (
                     <div className="badminton">
                       {sportsData.length === 0 ? (
-                        <h1 className="error-msg">No Data Found</h1>
+                        <>
+                          <h1 className="error-msg">No Data Found</h1>
+                          <div className="addMatchNO">
+                            <button
+                              title="Add Match"
+                              className="addbuttonNO"
+                              onClick={handleAddClick}
+                            >
+                              Add Match
+                            </button>
+                          </div>
+                        </>
                       ) : (
                         <>
-                        <table className="stats">
-                          <thead>
-                            <tr>
-                              <th>Opponent Name</th>
-                              <th>Score</th>
-                              <th>Winner</th>
-                              <th>Tournament Type</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {sportsData.map((badminton) => (
-                              <tr key={badminton._id}>
-                                <td>{badminton.oname}</td>
-                                <td>
-                                  {badminton.s1}/{badminton.s2}{" "}
-                                </td>
-                                <td>
-                                  {badminton.wt === true
-                                    ? playerData[0].name
-                                    : badminton.oname}
-                                </td>
-                                <td>{badminton.tot}</td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                        <div className="extra-comp">
+                          <div className="stats-container">
+                            <table className="stats">
+                              <thead>
+                                <tr>
+                                  <th>Opponent Name</th>
+                                  <th>Score</th>
+                                  <th>Winner</th>
+                                  <th>Tournament Type</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {sportsData.map((badminton) => (
+                                  <tr key={badminton._id}>
+                                    <td>{badminton.oname}</td>
+                                    <td>
+                                      {badminton.s1}/{badminton.s2}{" "}
+                                    </td>
+                                    <td>
+                                      {badminton.wt === true
+                                        ? playerData[0].name
+                                        : badminton.oname}
+                                    </td>
+                                    <td>{badminton.tot}</td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                          <div className="addMatch">
+                            <button
+                              title="Add Match"
+                              className="addbutton"
+                              onClick={handleAddClick}
+                            >
+                              +
+                            </button>
+                          </div>
+                          <div className="extra-comp">
                             <table className="extra-stats">
                               <thead>
                                 <tr>
@@ -232,9 +292,9 @@ export default function PlayerDash() {
                                 </tr>
                               </thead>
                               <tbody>
-                              <tr >
-                                    <td>{playerData[3].mw}</td>
-                                  </tr>
+                                <tr>
+                                  <td>{playerData[3].mw}</td>
+                                </tr>
                               </tbody>
                             </table>
                           </div>
@@ -245,34 +305,56 @@ export default function PlayerDash() {
                   {activeTab === "tt" && (
                     <div className="tt">
                       {sportsData.length === 0 ? (
-                        <h1 className="error-msg">No Data Found</h1>
+                        <>
+                          <h1 className="error-msg">No Data Found</h1>
+                          <div className="addMatchNO">
+                            <button
+                              title="Add Match"
+                              className="addbuttonNO"
+                              onClick={handleAddClick}
+                            >
+                              Add Match
+                            </button>
+                          </div>
+                        </>
                       ) : (
                         <>
-                        <table className="stats">
-                          <thead>
-                            <tr>
-                              <th>Opponent Name</th>
-                              <th>Score</th>
-                              <th>Winner</th>
-                              <th>Tournament Type</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {sportsData.map((match) => (
-                              <tr key={match._id}>
-                                <td>{match.oname}</td>
-                                <td>{match.s1}</td>
-                                <td>
-                                  {match.wt === true
-                                    ? playerData[0].name
-                                    : match.oname}
-                                </td>
-                                <td>{match.tot}</td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                        <div className="extra-comp">
+                          <div className="stats-container">
+                            <table className="stats">
+                              <thead>
+                                <tr>
+                                  <th>Opponent Name</th>
+                                  <th>Score</th>
+                                  <th>Winner</th>
+                                  <th>Tournament Type</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {sportsData.map((match) => (
+                                  <tr key={match._id}>
+                                    <td>{match.oname}</td>
+                                    <td>{match.s1}</td>
+                                    <td>
+                                      {match.wt === true
+                                        ? playerData[0].name
+                                        : match.oname}
+                                    </td>
+                                    <td>{match.tot}</td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                          <div className="addMatch">
+                            <button
+                              title="Add Match"
+                              className="addbutton"
+                              onClick={handleAddClick}
+                            >
+                              +
+                            </button>
+                          </div>
+                          <div className="extra-comp">
                             <table className="extra-stats">
                               <thead>
                                 <tr>
@@ -280,11 +362,9 @@ export default function PlayerDash() {
                                 </tr>
                               </thead>
                               <tbody>
-                                
-                                  <tr >
-                                    <td>{playerData[4].mw}</td>
-                                  </tr>
-                                
+                                <tr>
+                                  <td>{playerData[4].mw}</td>
+                                </tr>
                               </tbody>
                             </table>
                           </div>
@@ -295,40 +375,60 @@ export default function PlayerDash() {
                   {activeTab === "football" && (
                     <div className="football">
                       {sportsData.length === 0 ? (
-                        <h1 className="error-msg">No Data Found</h1>
+                        <>
+                          <h1 className="error-msg">No Data Found</h1>
+                          <div className="addMatchNO">
+                            <button
+                              title="Add Match"
+                              className="addbuttonNO"
+                              onClick={handleAddClick}
+                            >
+                              Add Match
+                            </button>
+                          </div>
+                        </>
                       ) : (
                         <>
-                        <table className="stats">
-                          <thead>
-                            <tr>
-                              <th>Team 1</th>
-                              <th>Score 1</th>
-                              <th>Team 2</th>
-                              <th>Score 2</th>
-                              <th>Winner</th>
-                              <th>Goals</th>
-                              <th>Tournament Type</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {sportsData.map((foot) => (
-                              <tr key={foot._id}>
-                                <td>{foot.t1}</td>
-                                <td>{foot.s1}</td>
-                                <td>{foot.t2}</td>
-                                <td>{foot.s2}</td>
-                                <td>
-                                  {foot.wt === true
-                                    ? foot.t1
-                                    : foot.t2}
-                                </td>
-                                <td>{foot.goal}</td>
-                                <td>{foot.tot}</td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                        <div className="extra-comp">
+                          <div className="stats-container">
+                            <table className="stats">
+                              <thead>
+                                <tr>
+                                  <th>Team 1</th>
+                                  <th>Score 1</th>
+                                  <th>Team 2</th>
+                                  <th>Score 2</th>
+                                  <th>Winner</th>
+                                  <th>Goals</th>
+                                  <th>Tournament Type</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {sportsData.map((foot) => (
+                                  <tr key={foot._id}>
+                                    <td>{foot.t1}</td>
+                                    <td>{foot.s1}</td>
+                                    <td>{foot.t2}</td>
+                                    <td>{foot.s2}</td>
+                                    <td>
+                                      {foot.wt === true ? foot.t1 : foot.t2}
+                                    </td>
+                                    <td>{foot.goal}</td>
+                                    <td>{foot.tot}</td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          <div className="addMatch">
+                            </div>
+                            <button
+                              title="Add Match"
+                              className="addbutton"
+                              onClick={handleAddClick}
+                            >
+                              +
+                            </button>
+                          </div>
+                          <div className="extra-comp">
                             <table className="extra-stats">
                               <thead>
                                 <tr>
@@ -336,9 +436,9 @@ export default function PlayerDash() {
                                 </tr>
                               </thead>
                               <tbody>
-                              <tr>
-                                    <td>{playerData[1].goal}</td>
-                                  </tr>
+                                <tr>
+                                  <td>{playerData[1].goal}</td>
+                                </tr>
                               </tbody>
                             </table>
                           </div>
@@ -346,9 +446,6 @@ export default function PlayerDash() {
                       )}
                     </div>
                   )}
-                </div>
-                <div className="addMatch">
-                <button title="Add Match" className="addbutton">+</button>
                 </div>
               </div>
             </>

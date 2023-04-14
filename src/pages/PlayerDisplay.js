@@ -147,6 +147,7 @@ export default function PlayerDisplay() {
                         <h1 className="error-msg">No Data Found</h1>
                       ) : (
                         <>
+                        <div className="stats-container">
                           <table className="stats">
                             <thead>
                               <tr>
@@ -175,6 +176,7 @@ export default function PlayerDisplay() {
                               ))}
                             </tbody>
                           </table>
+                        </div>
                           <div className="extra-comp">
                             <table className="extra-stats">
                               <thead>
@@ -202,6 +204,7 @@ export default function PlayerDisplay() {
                         <h1 className="error-msg">No Data Found</h1>
                       ) : (
                         <>
+                        <div className="stats-container">
                         <table className="stats">
                           <thead>
                             <tr>
@@ -228,6 +231,7 @@ export default function PlayerDisplay() {
                             ))}
                           </tbody>
                         </table>
+                        </div>
                         <div className="extra-comp">
                             <table className="extra-stats">
                               <thead>
@@ -252,6 +256,7 @@ export default function PlayerDisplay() {
                         <h1 className="error-msg">No Data Found</h1>
                       ) : (
                         <>
+                        <div className="stats-container">
                         <table className="stats">
                           <thead>
                             <tr>
@@ -276,6 +281,7 @@ export default function PlayerDisplay() {
                             ))}
                           </tbody>
                         </table>
+                        </div>
                         <div className="extra-comp">
                             <table className="extra-stats">
                               <thead>
@@ -302,6 +308,7 @@ export default function PlayerDisplay() {
                         <h1 className="error-msg">No Data Found</h1>
                       ) : (
                         <>
+                        <div className="stats-container">
                         <table className="stats">
                           <thead>
                             <tr>
@@ -332,6 +339,7 @@ export default function PlayerDisplay() {
                             ))}
                           </tbody>
                         </table>
+                        </div>
                         <div className="extra-comp">
                             <table className="extra-stats">
                               <thead>

@@ -95,7 +95,6 @@ export default function NewUser() {
             id="studentid"
             placeholder="Student ID"
             className="input-field"
-            autoComplete="off"
             required
             value={formData.studentid}
             onChange={handleInputChange}
@@ -120,7 +119,6 @@ export default function NewUser() {
             value={formData.password}
             onChange={handleInputChange}
           />
-          
           <input
             type="text"
             id="height"

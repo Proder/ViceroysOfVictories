@@ -39,7 +39,7 @@
       flex-direction: column;
       scroll-behavior: smooth;
       /* background-color: #2e2e30; */
-      padding: 0 20px;
+      padding: 0 15px;
       overflow-y: auto;
       overflow-x: hidden;
       position: relative;
@@ -49,7 +49,7 @@
   .header {
       display: flex;
       align-items: center;
-      padding: 10px 3px;
+      padding: 10px 2px;
       height: 11%;
       width: 100vw;
       white-space: nowrap;
@@ -333,8 +333,8 @@ section.profile-card article .info div span:nth-of-type(2) {
   align-items: center;
   padding: 12px;
   width: auto;
-  margin-left: 13vw ;
-  margin-right: 12px;
+  margin-left: 7vw ;
+  margin-right: 2vw;
   background-color: #eeeeee2b;
   border-radius: 20px 20px 20px 20px;
   position: sticky;
@@ -372,6 +372,7 @@ section.profile-card article .info div span:nth-of-type(2) {
 th{
   padding: 10px;
   font-size: 18px;
+  
 }
 
 td ,tr{
@@ -381,48 +382,91 @@ td ,tr{
 
   
   background-color: #eeeeee5c;
+  
   /* border-radius: 20px 20px 20px 20px; */
 }
 .stats{
   border: 5px solid rgba(255, 255, 255, 0.688);
   margin-left: auto;
-  width: 80%;
-  margin-right: 12px;
-  margin-top: 5%;
+  width: 87%;
+  margin-right: 2vw;
   padding: auto;
+  border-radius: 15px 15px 0 0;  
 }
-
+.stats-container{
+  overflow-y: scroll;
+  max-height: 35vh;
+  margin-top: 5vh;
+}
+.stats-container::-webkit-scrollbar{
+  display: none;
+}
 .extra-stats{
   border: 5px solid rgba(255, 255, 255, 0.688);
   margin-left: auto;
-  width: 80%;
-  margin-right: 12px;
-  margin-top: 10%;
+  width: 87%;
+  margin-right: 2vw;
+  margin-top: 10vh;
   padding: auto;
+  border-radius: 0 0 15px 15px;
 }
 
 .error-msg{
   color: #dfb91f;
   font-size: 32px;
-  margin-top: 20%;
-  margin-left: 45%;
+  margin-top: 15%;
+  margin-left: 42%;
   background-color: #eeeeee40;
   border-radius: 20px 20px 20px 20px;
   padding: 20px;
   width: 36vh;
 }
 
-.container-display{
+/* .container-display{
   overflow: scroll;
+  
 }
 .container-display::-webkit-scrollbar{
   display: none;
-}
+} */
 
 /* Add matches button CSS */
-.addMatch{
-  padding: 20px;
 
+
+.addMatchNO{
+  font-size: 32px;
+  margin-top: 2%;
+  margin-left: 42%;
+  background-color: #eeeeee40;
+  /* color: white; */
+  border-radius: 20px 20px 20px 20px;
+  padding: 15px;
+  width: 36vh;
+}
+
+.addbuttonNO{
+    padding: 0px 36px;
+    background-color: #eeeeee00;
+  font-weight: 200px;
+  color:#dfb91f;
+  font-size: 35px;
+  
+}
+.addMatchNO:hover{
+  color: #dfb91f;
+  background-color: white;
+}
+.addbuttonNO:hover{
+  color: #dfb91f;
+  
+}
+
+.addMatch{
+  margin-right: 9px;
+  margin-top:-32px;
+  right: 2px;
+  position: absolute;
+  z-index: 5;
 }
 
 .addbutton{
@@ -433,4 +477,5 @@ td ,tr{
 }
 .addbutton:hover{
   color: #dfb91f;
+  background-color: black;
 }
