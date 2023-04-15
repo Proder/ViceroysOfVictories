@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./dash.css";
 import { NavLink, Navigate } from "react-router-dom";
+import Footer from "../components/Footer"
 
 export default function Dash() {
   const [isLogin, setIsLogin] = useState(true);
@@ -122,97 +123,116 @@ export default function Dash() {
 
   return (
     <div>
-      {!login ? ( 
+      {!login ? (
         <div>
-          {!isLoading ? (<div className="dash-container">
-      <div className="left">
-        <div className="title-one">
-          <h1>Viceroys of</h1>
-        </div>
-        <div className="title-two">
-          <h2>VICTORIES</h2>
-        </div>
-      </div>
-      <div className="right">
-        <div className="form-structor">
-          <div className={`signup ${isLogin ? "" : "slide-up"}`}>
-            <h2 className="form-title" id="signup" onClick={handleAdminClick}>
-              ADMIN
-            </h2>
-            <div className="form-holder">
-              <form onSubmit={handleAdminSubmit} id="adminform">
-                <input
-                  type="email"
-                  className="input"
-                  placeholder="Email"
-                  name="email"
-                  required
-                  autoComplete="off"
-                  onChange={handleChange}
-                  value={formData.email}
-                />
-                <input
-                  type="password"
-                  className="input"
-                  placeholder="Password"
-                  name="password"
-                  required
-                  autoComplete="off"
-                  onChange={handleChange}
-                  value={formData.password}
-                />
-              </form>
-            </div>
-            <button className="submit-btn" type="submit" form="adminform">
-              Sign In
-            </button>
-          </div>
-
-          <div className={`login ${isLogin ? "slide-up" : ""}`}>
-            <div className="center">
-              <h2 className="form-title" id="login" onClick={handlePlayerClick}>
-                PLAYER
-              </h2>
-              <div className="form-holder">
-                <form onSubmit={handlePlayerSubmit} id="player-form">
-                  <input
-                    type="email"
-                    className="input"
-                    placeholder="Email"
-                    name="email"
-                    required
-                    // autoComplete="off"
-                    onChange={handleChange}
-                    value={formData.email}
-                  />
-                  <input
-                    type="password"
-                    className="input"
-                    placeholder="Password"
-                    name="password"
-                    required
-                    autoComplete="off"
-                    onChange={handleChange}
-                    value={formData.password}
-                  />
-                </form>
+          {!isLoading ? (
+            <div className="dash-container">
+              <div className="left">
+                <div className="title-one">
+                  <h1>Viceroys of</h1>
+                </div>
+                <div className="title-two">
+                  <h2>VICTORIES</h2>
+                </div>
               </div>
-              <button className="submit-btn" type="submit" form="player-form">
-                  Sign In
-              </button>
+              <div className="right">
+                <div className="form-structor">
+                  <div className={`signup ${isLogin ? "" : "slide-up"}`}>
+                    <h2
+                      className="form-title"
+                      id="signup"
+                      onClick={handleAdminClick}
+                    >
+                      ADMIN
+                    </h2>
+                    <div className="form-holder">
+                      <form onSubmit={handleAdminSubmit} id="adminform">
+                        <input
+                          type="email"
+                          className="input"
+                          placeholder="Email"
+                          name="email"
+                          required
+                          autoComplete="off"
+                          onChange={handleChange}
+                          value={formData.email}
+                        />
+                        <input
+                          type="password"
+                          className="input"
+                          placeholder="Password"
+                          name="password"
+                          required
+                          autoComplete="off"
+                          onChange={handleChange}
+                          value={formData.password}
+                        />
+                      </form>
+                    </div>
+                    <button
+                      className="submit-btn"
+                      type="submit"
+                      form="adminform"
+                    >
+                      Sign In
+                    </button>
+                    <NavLink to="/GuestDash" className="link">Continue as Guest</NavLink>
+                  </div>
+
+                  <div className={`login ${isLogin ? "slide-up" : ""}`}>
+                    <div className="center">
+                      <h2
+                        className="form-title"
+                        id="login"
+                        onClick={handlePlayerClick}
+                      >
+                        PLAYER
+                      </h2>
+                      <div className="form-holder">
+                        <form onSubmit={handlePlayerSubmit} id="player-form">
+                          <input
+                            type="email"
+                            className="input"
+                            placeholder="Email"
+                            name="email"
+                            required
+                            // autoComplete="off"
+                            onChange={handleChange}
+                            value={formData.email}
+                          />
+                          <input
+                            type="password"
+                            className="input"
+                            placeholder="Password"
+                            name="password"
+                            required
+                            autoComplete="off"
+                            onChange={handleChange}
+                            value={formData.password}
+                          />
+                        </form>
+                      </div>
+                      <button
+                        className="submit-btn"
+                        type="submit"
+                        form="player-form"
+                      >
+                        Sign In
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <Footer />
             </div>
-          </div>
+          ) : (
+            <div className="loader"></div>
+          )}
         </div>
-      </div>
-    </div>) : (<div className="loader"></div>)}
-          </div>
+      ) : user === "admin" ? (
+        <Navigate to="/AdminDash" replace={true} />
       ) : (
-        user === "admin" ? (
-      <Navigate to = "/AdminDash" replace={true}/>
-    )
-    : (
-      <Navigate to = "/PlayerDash" replace={true}/>
-    )
+        <Navigate to="/PlayerDash" replace={true} />
       )}
     </div>
   );

@@ -24,8 +24,6 @@ function App() {
           <Route path="/Badminton" element={<Badminton />} />
           <Route path="/TT" element={<TT />} />
           <Route path="/Football" element={<Football />} />
-
-
         </Routes>
       </Router>
     </div>

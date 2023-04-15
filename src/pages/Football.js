@@ -95,6 +95,7 @@ export default function Football() {
                   id="t2"
                   placeholder="Opponent Team Name"
                   className="input-field"
+                  //autocomplete="off"
                   required
                   value={formData.t2}
                   onChange={handleInputChange}

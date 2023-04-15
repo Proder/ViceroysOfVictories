@@ -292,4 +292,38 @@ section {
   }
 }
 
+footer{
+  bottom: 0;
+  width: 100vw;
+  position:absolute;
+  background-color: rgba(255, 255, 255, 0.473);
+  height: 10vh;
+  backdrop-filter: blur(2px);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  z-index: 100;
+}
+.footle{
+  margin-top: 7px;
+}
+.co-footle{
+  color:#2e2e30b3
+}
+.heart {
+  animation: heartbeat 1s infinite;
+  color: red;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 
