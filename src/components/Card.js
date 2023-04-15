@@ -4,15 +4,12 @@ import { Link } from "react-router-dom";
 
 
 
-export default function Card({ cardid, email, name,onClick }) {
+export default function Card({ cardid, email, name }) {
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    onClick(cardid);
-  };
+ 
 
   return (
-    <Link to="/PlayerDisplay" className="player-card" state={{id:cardid}}>
+    <Link to="#" className="player-card" state={{id:cardid}}>
       <div class="card__background">
         <div class="card__content">
           <p class="card__category">{email}</p>

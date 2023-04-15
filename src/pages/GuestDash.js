@@ -1,19 +1,17 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
-
 import "./AdminDash.css";
-import Cardlist from "../components/Cardlist";
+import Guestlist from "../components/Guestlist";
 import Navbar from "../components/GuestNavbar";
 
 
-export default function AdminDash() {
+export default function GuestDash() {
   return (
     <div>
       
       <div class="container">
         <Navbar />
         <div>
-          <Cardlist />
+          <Guestlist />
         </div>
       </div>
      

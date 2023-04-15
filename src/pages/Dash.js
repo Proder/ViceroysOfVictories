@@ -3,6 +3,7 @@ import "./dash.css";
 import { NavLink, Navigate } from "react-router-dom";
 import Footer from "../components/Footer"
 
+
 export default function Dash() {
   const [isLogin, setIsLogin] = useState(true);
   const [login, setLogin] = useState(false);
@@ -127,13 +128,14 @@ export default function Dash() {
         <div>
           {!isLoading ? (
             <div className="dash-container">
+              {/* <Animate />  */}
               <div className="left">
-                <div className="title-one">
-                  <h1>Viceroys of</h1>
-                </div>
-                <div className="title-two">
-                  <h2>VICTORIES</h2>
-                </div>
+                <nav>
+                  <div className="title">
+                  <h1 >Viceroys of Victories</h1>
+                  </div>
+                </nav>
+
               </div>
               <div className="right">
                 <div className="form-structor">

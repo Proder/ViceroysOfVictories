@@ -304,11 +304,13 @@ footer{
   z-index: 100;
 }
 .footle{
-  margin-top: 7px;
+  margin-top: 10px;
+  font-size: 25px;
+  font-weight: 300;
+  /* color: #2e2e30  ; */
+  font-family:monospace;
 }
-.co-footle{
-  color:#2e2e30b3
-}
+
 .guest{
   position: relative;
   height: 5vh;
@@ -317,17 +319,19 @@ footer{
   align-items: center;
   font-size: 13px;
   text-align: center;
-  background-color: #0000006a;
-  color: rgb(255, 254, 254);
-  font-weight: 300  ;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: rgb(255, 254, 254,0.7);
+  font-weight: bold ;
   border-radius: 12px;
   cursor: pointer;
   opacity: 1;
   visibility: visible;
+  -webkit-transition: all 0.3s ease;
 
 }
 .guest:hover{
   transition: all 0.3s ease;
   background-color: rgba(0, 0, 0, 0.8);
 }
+
 
