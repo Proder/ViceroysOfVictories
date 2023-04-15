@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../components/UserNavbar";
 import { Navigate } from "react-router-dom";
 
-export default function CRICKET() {
-
+export default function Badminton() {
   const [formData, setFormData] = useState({
     tot: "",
     oname: "",
@@ -11,10 +10,7 @@ export default function CRICKET() {
     s1: "",
     s2: "",
     wt: null,
-    
   });
-
-  let x=false;
 
   const handleInputChange = (event) => {
     const { id, value } = event.target;
@@ -24,45 +20,45 @@ export default function CRICKET() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(formData);
-  
-      var myHeaders = new Headers();
-      myHeaders.append("playerAuth", sessionStorage.getItem("playerAuth"));
-      myHeaders.append("Content-Type", "application/json");
 
-     
-      var raw = JSON.stringify(
-        {//formData
-        tot: formData.tot,
-        oname: formData.oname,
-        s1: formData.s1,
-        s2: formData.s2,
-        wt: formData.wt === "True" ? true : false,
-        }
-      );
+    var myHeaders = new Headers();
+    myHeaders.append("playerAuth", sessionStorage.getItem("playerAuth"));
+    myHeaders.append("Content-Type", "application/json");
 
-      var requestOptions = {
-        method: "POST",
-        headers: myHeaders,
-        body: raw,
-        redirect: "follow",
-      };
+    var raw = JSON.stringify({
+      tot: formData.tot,
+      oname: formData.oname,
+      oid: formData.oid,
+      s1: formData.s1,
+      s2: formData.s2,
+      wt: formData.wt === "True" ? true : false,
+    });
 
-      fetch("https://vov.cyclic.app/player/badminton/addmatch", requestOptions)
-        .then((response) => response.text())  
-        .then((result) => console.log(result))
-        .then((result) => {
-          window.alert("New Entry Done");
-          setFormData({
-            tot: "",
-            oname: "",
-            oid: "",
-            s1: "",
-            s2: "",
-            wt: "",
-          });
-        })
-        .catch((error) => console.log("error", error));
-    
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch("https://vov.cyclic.app/player/badminton/addmatch", requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+        if(result.hasOwnProperty('error')){
+          window.alert(result.error)
+        }else{
+        window.alert("New Entry Done");
+        setFormData({
+          tot: "",
+          oname: "",
+          oid: "",
+          s1: "",
+          s2: "",
+          wt: "",
+        });
+      }})
+      .catch((error) => console.log("error", error));
   };
 
   return (

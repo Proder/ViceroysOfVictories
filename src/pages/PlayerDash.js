@@ -20,12 +20,14 @@ export default function PlayerDash() {
     };
     const fetchData = async () => {
       try {
+        setIsDataLoaded(false)
         const response = await fetch(
           `https://vov.cyclic.app/self/players/${activeTab}`,
           requestOptions
         );
         const data = await response.json();
         setSportsData(data);
+        setIsDataLoaded(true)
       } catch (error) {
         console.error(error);
       }

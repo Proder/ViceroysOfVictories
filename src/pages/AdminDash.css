@@ -183,7 +183,7 @@
       margin: 0 auto;
     /* arrange the loading spinner at the center of the page */
       top: 35vh;
-      animation: spin 1s linear infinite;
+      animation: spin 0.5s linear infinite;
     }
     
     @keyframes spin {
@@ -194,12 +194,9 @@
  .profile-card{
   width: 22vw;
   position: relative;
-  /* border-radius: 2  0px; */
-  
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.13);
   margin: 10vh;
   height: 60vh;
-  
  }
 
  .proCard{
@@ -273,7 +270,7 @@ section.profile-card article h2 {
 section.profile-card article .info {
   display: -webkit-box;
   display: -moz-box;
-  display: box;
+  display: flex;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
@@ -422,13 +419,6 @@ td ,tr{
   width: 36vh;
 }
 
-/* .container-display{
-  overflow: scroll;
-  
-}
-.container-display::-webkit-scrollbar{
-  display: none;
-} */
 
 /* Add matches button CSS */
 

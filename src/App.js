@@ -7,6 +7,8 @@ import PlayerDisplay from "./pages/PlayerDisplay";
 import PlayerDash from "./pages/PlayerDash";
 import Cricket from "./pages/CRICKET";
 import Badminton from "./pages/Badminton";
+import TT from "./pages/TT";
+import Football from "./pages/Football";
 
 function App() {
   return (
@@ -20,6 +22,10 @@ function App() {
           <Route path="/PlayerDisplay" element={<PlayerDisplay />} />
           <Route path="/Cricket" element={<Cricket />} />
           <Route path="/Badminton" element={<Badminton />} />
+          <Route path="/TT" element={<TT />} />
+          <Route path="/Football" element={<Football />} />
+
+
         </Routes>
       </Router>
     </div>
