@@ -20,14 +20,14 @@ export default function PlayerDash() {
     };
     const fetchData = async () => {
       try {
-        setIsDataLoaded(false)
+        // setIsDataLoaded(false)
         const response = await fetch(
           `https://vov.cyclic.app/self/players/${activeTab}`,
           requestOptions
         );
         const data = await response.json();
-        setSportsData(data);
-        setIsDataLoaded(true)
+        setSportsData(data);  
+        // setIsDataLoaded(true)
       } catch (error) {
         console.error(error);
       }
@@ -37,7 +37,8 @@ export default function PlayerDash() {
   }, [activeTab]);
 
   const handleTabClick = (tabName) => {
-    setActiveTab(tabName);
+    setIsDataLoaded(false)
+    setTimeout(()=>{setActiveTab(tabName);setIsDataLoaded(true)},1500);
   };
 
   const handleAddClick = () => {
@@ -155,6 +156,7 @@ export default function PlayerDash() {
                   </button>
                 </div>
                 <div className="container-display">
+                  
                   {activeTab === "cricket" && (
                     <div className="cricket">
                       {sportsData.length === 0 ? (

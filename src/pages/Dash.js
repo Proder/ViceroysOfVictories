@@ -176,7 +176,9 @@ export default function Dash() {
                     >
                       Sign In
                     </button>
+                    <div className="guest">
                     <NavLink to="/GuestDash" className="link">Continue as Guest</NavLink>
+                    </div>
                   </div>
 
                   <div className={`login ${isLogin ? "slide-up" : ""}`}>

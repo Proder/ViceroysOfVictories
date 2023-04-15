@@ -9,6 +9,7 @@ import Cricket from "./pages/CRICKET";
 import Badminton from "./pages/Badminton";
 import TT from "./pages/TT";
 import Football from "./pages/Football";
+import GuestDash from "./pages/GuestDash";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<Dash />} />
+          <Route exact path="/GuestDash" element={<GuestDash />} />
           <Route path="/PlayerDash" element={<PlayerDash />} />
           <Route path="/AdminDash" element={<AdminDash />} />
           <Route path="/NewUser" element={<NewUser />} />

@@ -309,21 +309,25 @@ footer{
 .co-footle{
   color:#2e2e30b3
 }
-.heart {
-  animation: heartbeat 1s infinite;
-  color: red;
-}
+.guest{
+  position: relative;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  text-align: center;
+  background-color: #0000006a;
+  color: rgb(255, 254, 254);
+  font-weight: 300  ;
+  border-radius: 12px;
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
 
-@keyframes heartbeat {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
-  }
 }
-
+.guest:hover{
+  transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.8);
+}
 
