@@ -29,6 +29,7 @@ nav{
    left: 39vw;
     top: 20vh;
     z-index: 1000;
+   
 }
 .form-structor::after {
   content: "";

@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card from "./GuestCard";
 import React, { useState, useEffect } from "react";
 import "../pages/AdminDash.css";
 // import PlayerDisplay from "../pages/PlayerDisplay";

@@ -1,18 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import "../pages/AdminDash.css";
 import { Link } from "react-router-dom";
 
 
 
-export default function Card({ cardid, email, name,onClick}) {
-  const handleClick = (e) => {
-    e.preventDefault();
-    onClick(cardid);
-  };
-
+export default function GuestCard({ cardid, email, name}) {
 
   return (
-    <Link to="/PlayerDisplay" className="player-card" state={{id:cardid}}>
+    <Link to="#" className="player-card" state={{id:cardid}}>
       <div class="card__background">
         <div class="card__content">
           <p class="card__category">{email}</p>

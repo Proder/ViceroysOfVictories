@@ -128,7 +128,7 @@ export default function Dash() {
         <div>
           {!isLoading ? (
             <div className="dash-container">
-              {/* <Animate />  */}
+              
               <div className="left">
                 <nav>
                   <div className="title">
