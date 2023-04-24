@@ -218,7 +218,7 @@ export default function PlayerDash() {
                                     <td>{cricket.wt}</td>
                                     <td>{cricket.run}</td>
                                     <td>{cricket.wicket}</td>
-                                    <td>{cricket.tot}<i class="fa-solid fa-trash" title="Delete Record" onClick={handleDelete(cricket._id)}></i></td>
+                                    <td>{cricket.tot}<i class="fa-solid fa-trash" title="Delete Record" onClick={handleDelete(sportsData._id)}></i></td>
                                   </tr>
                                 ))}
                               </tbody>

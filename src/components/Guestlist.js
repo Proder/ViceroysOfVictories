@@ -14,12 +14,15 @@ export default function Guestlist() {
       redirect: 'follow'
     };
     
-    fetch( `https://vov.cyclic.app/search/players/${searchWord}`, requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
+    fetch( `https://vov.cyclic.app/guest/search/players/${searchWord}`, requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        setCards(result);
+        setIsLoading(false);
+      })
       .catch(error => console.log('error', error));
     
-    },[searchWord])
+    },[searchWord]);
 
   useEffect(function () {
     var myHeaders = new Headers();

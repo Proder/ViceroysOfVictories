@@ -391,8 +391,9 @@ td ,tr{
 }
 td i{
   /* text-indent: 5vw; */
-  left: 3vw;
+  left: 1vw;
   position: relative;
+  font-size: 18 px;
 }
 .stats{
   border: 5px solid rgba(255, 255, 255, 0.688);
@@ -447,8 +448,8 @@ td i{
 }
 
 .addbuttonNO{
-    padding: 0px 36px;
-    background-color: #eeeeee00;
+  padding: 0px 36px;
+  background-color: #eeeeee00;
   font-weight: 200px;
   color:#dfb91f;
   font-size: 35px;
