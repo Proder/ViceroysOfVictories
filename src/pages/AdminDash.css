@@ -2,9 +2,13 @@
     height: 40px;
     display: flex;
     width: 100%;
-    max-width: 400px;
+    max-width: 250px;
     padding-left: 16px;
     border-radius: 4px;
+    align-items: center;
+    position: absolute;
+    top: 90px;
+    right: 5px;
   }
   
   .search-bar input {
@@ -22,7 +26,7 @@
     background-size: 14px;
     background-repeat: no-repeat;
     background-position: 16px 48%;
-    color:rgb(134 140 160 / 51%);
+    color:rgba(0, 0, 0, 0.51);
   }
   
   .search-bar input::placeholder {
@@ -95,6 +99,7 @@
       min-height: 100%;
       justify-content: center;
       padding: 64px 24px;
+      top: auto;
 
     }
     
@@ -381,6 +386,11 @@ td ,tr{
   background-color: #eeeeee5c;
   
   /* border-radius: 20px 20px 20px 20px; */
+}
+td i{
+  /* text-indent: 5vw; */
+  left: 3vw;
+  position: relative;
 }
 .stats{
   border: 5px solid rgba(255, 255, 255, 0.688);

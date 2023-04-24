@@ -223,6 +223,7 @@ export default function Dash() {
                       >
                         Sign In
                       </button>
+                      <NavLink to="/GuestDash" className="playlink">Continue as Guest</NavLink>
                     </div>
                   </div>
                 </div>

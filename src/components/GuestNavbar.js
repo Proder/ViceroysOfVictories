@@ -20,9 +20,6 @@ export default function Navbar() {
           <NavLink to="/CricketDisplay" className="link">
             Badminton
           </NavLink>
-          <NavLink to="/BadDisplay" className="link">
-            Cricket
-          </NavLink>
           <NavLink to="/TtDisplay" className="link">
             TT
           </NavLink>

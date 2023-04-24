@@ -16,6 +16,12 @@ nav{
   /* color: #2e2e30  ; */
   font-family:monospace;
 }
+.playlink{
+  color: #000;
+  text-decoration: none;
+  position: absolute;
+  left: 3vw;
+}
 
 
 .form-structor {

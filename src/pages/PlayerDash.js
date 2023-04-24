@@ -26,7 +26,7 @@ export default function PlayerDash() {
           requestOptions
         );
         const data = await response.json();
-        setSportsData(data);  
+        setSportsData(data);
         // setIsDataLoaded(true)
       } catch (error) {
         console.error(error);
@@ -37,8 +37,11 @@ export default function PlayerDash() {
   }, [activeTab]);
 
   const handleTabClick = (tabName) => {
-    setIsDataLoaded(false)
-    setTimeout(()=>{setActiveTab(tabName);setIsDataLoaded(true)},1500);
+    setIsDataLoaded(false);
+    setTimeout(() => {
+      setActiveTab(tabName);
+      setIsDataLoaded(true);
+    }, 1500);
   };
 
   const handleAddClick = () => {
@@ -58,6 +61,23 @@ export default function PlayerDash() {
         break;
     }
   };
+
+  const handleDelete=(key) =>{
+    console.log(key);
+    var myHeaders = new Headers();
+    myHeaders.append("playerAuth", sessionStorage.getItem("playerAuth"));
+    var requestOptions = {
+      method: "DELETE",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+    fetch(`https://vov.cyclic.app/self/players/delete/${key}`, requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => console.log("error", error));
+  }
 
   useEffect(() => {
     var myHeaders = new Headers();
@@ -156,7 +176,6 @@ export default function PlayerDash() {
                   </button>
                 </div>
                 <div className="container-display">
-                  
                   {activeTab === "cricket" && (
                     <div className="cricket">
                       {sportsData.length === 0 ? (
@@ -190,6 +209,7 @@ export default function PlayerDash() {
                               </thead>
                               <tbody>
                                 {sportsData.map((cricket) => (
+                                  
                                   <tr key={cricket._id}>
                                     <td>{cricket.t1}</td>
                                     <td>{cricket.s1}</td>
@@ -198,7 +218,7 @@ export default function PlayerDash() {
                                     <td>{cricket.wt}</td>
                                     <td>{cricket.run}</td>
                                     <td>{cricket.wicket}</td>
-                                    <td>{cricket.tot}</td>
+                                    <td>{cricket.tot}<i class="fa-solid fa-trash" title="Delete Record" onClick={handleDelete(cricket._id)}></i></td>
                                   </tr>
                                 ))}
                               </tbody>
@@ -422,8 +442,8 @@ export default function PlayerDash() {
                                 ))}
                               </tbody>
                             </table>
+                          </div>
                           <div className="addMatch">
-                            </div>
                             <button
                               title="Add Match"
                               className="addbutton"
