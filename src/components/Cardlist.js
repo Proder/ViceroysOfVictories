@@ -20,8 +20,12 @@ export default function Cardlist() {
     };
     
     fetch(`https://easy-teal-dibbler-cape.cyclic.app/search/players/${searchWord}`, requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+        setCards(result);
+        setIsLoading(false);
+      })
       .catch(error => console.log('error', error));
   },[searchWord]) 
 
@@ -60,7 +64,7 @@ export default function Cardlist() {
           </div>
           <section class="hero-section">
             <div class="card-grid">
-              {cards.filter((card) => card.name.toLowerCase().includes(searchWord.toLowerCase())).map((card) => (
+            {cards.map((card) => (
                 <Card cardid={card._id} email={card.email} name={card.name} />
               ))}
             </div>

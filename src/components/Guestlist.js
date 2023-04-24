@@ -55,7 +55,7 @@ export default function Guestlist() {
         </div>
         <section class="hero-section">
           <div class="card-grid">
-            {cards.filter((card) => card.name.toLowerCase().includes(searchWord.toLowerCase())).map((card) => (
+          {cards.map((card) => (
               <Card cardid={card._id} email={card.email} name={card.name} />
             ))}
           </div>

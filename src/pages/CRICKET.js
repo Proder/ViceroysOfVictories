@@ -48,11 +48,11 @@ export default function CRICKET() {
     fetch("https://vov.cyclic.app/player/cricket/addmatch", requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         if (result.hasOwnProperty('error')) {
           window.alert(result.error);
         } else {
           window.alert("New Entry Done");
+        }
           setFormData({
             tot: "",
             t1: "",
@@ -63,7 +63,6 @@ export default function CRICKET() {
             run: null,
             wicket: null,
           });
-        }
       })
       .catch((error) => console.log("error", error));
   };
