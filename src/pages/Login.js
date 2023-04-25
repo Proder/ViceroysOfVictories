@@ -81,8 +81,6 @@ export default function Dash() {
   const handlePlayerSubmit = (e) => {
     setIsLoading(true);
     e.preventDefault();
-    console.log(formData);
-
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 

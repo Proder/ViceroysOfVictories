@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../../components/UserNavbar";
 import { Navigate, useNavigate } from "react-router-dom";
 
-
 export default function PlayerDash() {
   const [playerData, setPlayerData] = useState(null);
   const [isDataLoaded, setIsDataLoaded] = useState(false);
@@ -26,7 +25,7 @@ export default function PlayerDash() {
         );
         const data = await response.json();
         setSportsData(data);
-        // setIsDataLoaded(true)
+        setIsDataLoaded(true);
       } catch (error) {
         console.error(error);
       }
@@ -57,8 +56,8 @@ export default function PlayerDash() {
     }
   };
 
-  const handleDelete=(key) =>{
-    console.log(key);
+  const handleDelete = (key, e) => {
+    e.preventDefault();
     var myHeaders = new Headers();
     myHeaders.append("playerAuth", sessionStorage.getItem("playerAuth"));
     var requestOptions = {
@@ -66,13 +65,34 @@ export default function PlayerDash() {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch(`https://vov.cyclic.app/self/players/delete/${key}`, requestOptions)
+    fetch(
+      `https://vov.cyclic.app/self/players/delete/${activeTab}/${key}`,
+      requestOptions
+    )
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
+        window.alert(result.message);
+        setIsDataLoaded(true);
+      })
+      .then(() => {
+        var myHeaders = new Headers();
+        myHeaders.append("playerAuth", sessionStorage.getItem("playerAuth"));
+        var requestOptions = {
+          method: "GET",
+          headers: myHeaders,
+          redirect: "follow",
+        };
+        fetch("https://vov.cyclic.app/self/players/detail", requestOptions)
+          .then((response) => response.json())
+          .then((result) => {
+            setPlayerData(result);
+            setIsDataLoaded(true);
+          })
+          .catch((error) => console.log("error", error));
       })
       .catch((error) => console.log("error", error));
-  }
+    e.target.parentElement.parentElement.remove();
+  };
 
   useEffect(() => {
     var myHeaders = new Headers();
@@ -98,7 +118,8 @@ export default function PlayerDash() {
       ) : (
         <div className="container">
           <Navbar />
-          {isDataLoaded ? (
+
+          {isDataLoaded && playerData ? (
             <>
               <div className="left-profile">
                 <section class="profile-card">
@@ -204,7 +225,6 @@ export default function PlayerDash() {
                               </thead>
                               <tbody>
                                 {sportsData.map((cricket) => (
-                                  
                                   <tr key={cricket._id}>
                                     <td>{cricket.t1}</td>
                                     <td>{cricket.s1}</td>
@@ -214,7 +234,16 @@ export default function PlayerDash() {
                                     <td>{cricket.run}</td>
                                     <td>{cricket.wicket}</td>
                                     <td>{cricket.tot}</td>
-                                    <td><i class="fa-solid fa-trash" title="Delete Record" id="delete" onClick={handleDelete(sportsData._id)}></i></td>
+                                    <td>
+                                      <i
+                                        class="fa-solid fa-trash"
+                                        title="Delete Record"
+                                        id="delete"
+                                        onClick={(e) =>
+                                          handleDelete(cricket._id, e)
+                                        }
+                                      ></i>
+                                    </td>
                                   </tr>
                                 ))}
                               </tbody>
@@ -291,7 +320,16 @@ export default function PlayerDash() {
                                         : badminton.oname}
                                     </td>
                                     <td>{badminton.tot}</td>
-                                    <td><i class="fa-solid fa-trash" title="Delete Record" id="delete" onClick={handleDelete(sportsData._id)}></i></td>
+                                    <td>
+                                      <i
+                                        class="fa-solid fa-trash"
+                                        title="Delete Record"
+                                        id="delete"
+                                        onClick={(e) =>
+                                          handleDelete(badminton._id, e)
+                                        }
+                                      ></i>
+                                    </td>
                                   </tr>
                                 ))}
                               </tbody>
@@ -363,7 +401,16 @@ export default function PlayerDash() {
                                         : match.oname}
                                     </td>
                                     <td>{match.tot}</td>
-                                    <td><i class="fa-solid fa-trash" title="Delete Record" id="delete" onClick={handleDelete(sportsData._id)}></i></td>
+                                    <td>
+                                      <i
+                                        class="fa-solid fa-trash"
+                                        title="Delete Record"
+                                        id="delete"
+                                        onClick={(e) =>
+                                          handleDelete(match._id, e)
+                                        }
+                                      ></i>
+                                    </td>
                                   </tr>
                                 ))}
                               </tbody>
@@ -413,61 +460,76 @@ export default function PlayerDash() {
                         </>
                       ) : (
                         <>
-                          <div className="stats-container">
-                            <table className="stats">
-                              <thead>
-                                <tr>
-                                  <th>Team 1</th>
-                                  <th>Score 1</th>
-                                  <th>Team 2</th>
-                                  <th>Score 2</th>
-                                  <th>Winner</th>
-                                  <th>Goals</th>
-                                  <th>Tournament Type</th>
-                                  <th>Action</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {sportsData.map((foot) => (
-                                  <tr key={foot._id}>
-                                    <td>{foot.t1}</td>
-                                    <td>{foot.s1}</td>
-                                    <td>{foot.t2}</td>
-                                    <td>{foot.s2}</td>
-                                    <td>
-                                      {foot.wt === true ? foot.t1 : foot.t2}
-                                    </td>
-                                    <td>{foot.goal}</td>
-                                    <td>{foot.tot}</td>
-                                    <td><i class="fa-solid fa-trash" title="Delete Record" id="delete" onClick={handleDelete(sportsData._id)}></i></td>
-                                  </tr>
-                                ))}
-                              </tbody>
-                            </table>
-                          </div>
-                          <div className="addMatch">
-                            <button
-                              title="Add Match"
-                              className="addbutton"
-                              onClick={handleAddClick}
-                            >
-                              +
-                            </button>
-                          </div>
-                          <div className="extra-comp">
-                            <table className="extra-stats">
-                              <thead>
-                                <tr>
-                                  <th>Total Goals</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>{playerData[1].goal}</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
+                          {isDataLoaded ? (
+                            <>
+                              <div className="stats-container">
+                                <table className="stats">
+                                  <thead>
+                                    <tr>
+                                      <th>Team 1</th>
+                                      <th>Score 1</th>
+                                      <th>Team 2</th>
+                                      <th>Score 2</th>
+                                      <th>Winner</th>
+                                      <th>Goals</th>
+                                      <th>Tournament Type</th>
+                                      <th>Action</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {sportsData.map((foot) => (
+                                      <tr key={foot._id}>
+                                        <td>{foot.t1}</td>
+                                        <td>{foot.s1}</td>
+                                        <td>{foot.t2}</td>
+                                        <td>{foot.s2}</td>
+                                        <td>
+                                          {foot.wt === true ? foot.t1 : foot.t2}
+                                        </td>
+                                        <td>{foot.goal}</td>
+                                        <td>{foot.tot}</td>
+                                        <td>
+                                          <i
+                                            class="fa-solid fa-trash"
+                                            title="Delete Record"
+                                            id="delete"
+                                            onClick={(e) =>
+                                              handleDelete(foot._id, e)
+                                            }
+                                          ></i>
+                                        </td>
+                                      </tr>
+                                    ))}
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div className="addMatch">
+                                <button
+                                  title="Add Match"
+                                  className="addbutton"
+                                  onClick={handleAddClick}
+                                >
+                                  +
+                                </button>
+                              </div>
+                              <div className="extra-comp">
+                                <table className="extra-stats">
+                                  <thead>
+                                    <tr>
+                                      <th>Total Goals</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>{playerData[1].goal}</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </>
+                          ) : (
+                            <div className="loader"></div>
+                          )}
                         </>
                       )}
                     </div>
