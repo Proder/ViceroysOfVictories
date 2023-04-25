@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Navbar from "../components/UserNavbar";
+import Navbar from "../../components/UserNavbar";
 import { Navigate } from "react-router-dom";
 
 export default function Badminton() {
@@ -41,24 +41,24 @@ export default function Badminton() {
       redirect: "follow",
     };
 
-    fetch("https://vov.cyclic.app/player/tt/addmatch", requestOptions)
-    .then((response) => response.json())
-    .then((result) => {
-      console.log(result);
-      if(result.hasOwnProperty('error')){
-        window.alert(result.error)
-      }else{
-      window.alert("New Entry Done");
-      setFormData({
-        tot: "",
-        oname: "",
-        oid: "",
-        s1: "",
-        s2: "",
-        wt: "",
-      });
-    }})
-    .catch((error) => console.log("error", error));
+    fetch("https://vov.cyclic.app/player/badminton/addmatch", requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+        if(result.hasOwnProperty('error')){
+          window.alert(result.error)
+        }else{
+        window.alert("New Entry Done");
+        setFormData({
+          tot: "",
+          oname: "",
+          oid: "",
+          s1: "",
+          s2: "",
+          wt: "",
+        });
+      }})
+      .catch((error) => console.log("error", error));
   };
 
   return (
@@ -69,9 +69,9 @@ export default function Badminton() {
         <div className="container">
           <Navbar />
           <div className="details" id="info">
-            <h4 className="heading">Table Tennis</h4>
+            <h4 className="heading">Badminton</h4>
             <p className="paragraph">
-              Enter the details of your table tennis matches
+              Enter the details of your badminton matches
             </p>
             <div className="input-form-container">
               <form className="input-form">

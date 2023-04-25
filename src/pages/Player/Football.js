@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import Navbar from "../components/UserNavbar";
+import Navbar from "../../components/UserNavbar";
 import { Navigate } from "react-router-dom";
 
-export default function Badminton() {
+export default function Football() {
   const [formData, setFormData] = useState({
     tot: "",
-    oname: "",
-    oid: "",
+    t1: "",
+    t2: "",
     s1: "",
     s2: "",
     wt: null,
+    goal:"",
+    
   });
 
   const handleInputChange = (event) => {
@@ -27,11 +29,12 @@ export default function Badminton() {
 
     var raw = JSON.stringify({
       tot: formData.tot,
-      oname: formData.oname,
-      oid: formData.oid,
+      t1: formData.t1,
+      t2: formData.t2,
       s1: formData.s1,
       s2: formData.s2,
       wt: formData.wt === "True" ? true : false,
+      goal: formData.goal
     });
 
     var requestOptions = {
@@ -41,23 +44,25 @@ export default function Badminton() {
       redirect: "follow",
     };
 
-    fetch("https://vov.cyclic.app/player/badminton/addmatch", requestOptions)
+    fetch("https://vov.cyclic.app/player/football/addmatch", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
-        if(result.hasOwnProperty('error')){
-          window.alert(result.error)
-        }else{
-        window.alert("New Entry Done");
-        setFormData({
-          tot: "",
-          oname: "",
-          oid: "",
-          s1: "",
-          s2: "",
-          wt: "",
-        });
-      }})
+        if (result.hasOwnProperty('error')) {
+          window.alert(result.error);
+        } else {
+          window.alert(result.message);
+          setFormData({
+            tot: "",
+            t1: "",
+            t2: "",
+            s1: "",
+            s2: "",
+            wt: "",
+            goal: ""
+          });
+        }
+      })
       .catch((error) => console.log("error", error));
   };
 
@@ -69,35 +74,36 @@ export default function Badminton() {
         <div className="container">
           <Navbar />
           <div className="details" id="info">
-            <h4 className="heading">Badminton</h4>
+            <h4 className="heading">Football</h4>
             <p className="paragraph">
-              Enter the details of your badminton matches
+              Enter the details of your football matches
             </p>
             <div className="input-form-container">
               <form className="input-form">
                 <input
                   type="text"
-                  id="oname"
-                  placeholder="Opponent Name"
+                  id="t1"
+                  placeholder="Your Team Name"
                   className="input-field"
                   // autoComplete="off"
                   required
-                  value={formData.oname}
+                  value={formData.t1}
                   onChange={handleInputChange}
                 />
                 <input
                   type="text"
-                  id="oid"
-                  placeholder="Opponent Student ID"
+                  id="t2"
+                  placeholder="Opponent Team Name"
                   className="input-field"
+                  //autocomplete="off"
                   required
-                  value={formData.oid}
+                  value={formData.t2}
                   onChange={handleInputChange}
                 />
                 <input
                   type="text"
                   id="s1"
-                  placeholder="Your Score"
+                  placeholder="Your Team Goals"
                   className="input-field"
                   // autoComplete="off"
                   required
@@ -107,27 +113,33 @@ export default function Badminton() {
                 <input
                   type="text"
                   id="s2"
-                  placeholder="Opponent Score"
+                  placeholder="Opponent Team Goals"
                   className="input-field"
                   // autoComplete="off"
                   required
                   value={formData.s2}
                   onChange={handleInputChange}
                 />
-                <select
-                  className="select-field bad"
-                  id="wt"
-                  value={formData.wt}
+                <input
+                  type="number"
+                  id="goal"
+                  placeholder="Your Goals"
+                  className="input-field-extras"
+                  // autoComplete="off"
+                  value={formData.goal}
                   onChange={handleInputChange}
-                >
-                  <option value="" disabled selected>
-                    Winning Status
-                  </option>
-                  <option value="True">True</option>
-                  <option value="False">False</option>
-                </select>
+                />
+                <input
+                  type="text"
+                  id="wt"
+                  placeholder="Winning Team"
+                  className="input-field-extras"
+                  value={formData.wt}
+                  // autoComplete="off"
+                  onChange={handleInputChange}
+                />
                 <select
-                  className="select-field bad"
+                  className="select-field"
                   id="tot"
                   value={formData.tot}
                   onChange={handleInputChange}

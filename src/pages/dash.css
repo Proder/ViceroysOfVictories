@@ -21,6 +21,47 @@ nav{
   text-decoration: none;
   position: absolute;
   left: 3vw;
+  font-weight: bolder;
+}
+.left{
+  width:50%;
+  left: 0;
+  position: absolute;
+  height: 100%;
+  background:rgb(53, 50, 50)  ;
+}
+.right{
+  background-color: #1E1C1A;
+  width:50%;
+  right: 0;
+  position: absolute;
+  height:100%;
+  font-weight:300;
+
+}
+.title-one{
+position: absolute;
+left: 8%;
+top: 30%;
+font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-style: normal;
+font-weight: 600;
+font-size: 60px;
+line-height: 100.5%;
+letter-spacing: -2px;
+color: #F6B306;
+}
+.title-two{
+position: absolute;
+height: 60%;
+left: 15%;
+top: 40%;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-style: normal;
+font-weight: 600;
+font-size: 90px;
+letter-spacing: -2px;
+color: #06E7F6;
 }
 
 
@@ -32,7 +73,7 @@ nav{
   position: absolute;
   overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-   left: 39vw;
+   left: 15vw;
     top: 20vh;
     z-index: 1000;
    

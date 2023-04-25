@@ -383,15 +383,12 @@ td ,tr{
   text-align: center;
   padding: 15px ;
   width:auto;
-
-  
   background-color: #eeeeee5c;
   
   /* border-radius: 20px 20px 20px 20px; */
 }
 td i{
-  /* text-indent: 5vw; */
-  left: 1vw;
+
   position: relative;
   font-size: 18 px;
 }
@@ -481,4 +478,12 @@ td i{
 .addbutton:hover{
   color: #dfb91f;
   background-color: black;
+}
+
+#delete:hover{
+  background-color: #323232;
+  color: white;
+  border-radius: 50%;
+  padding: 9px;
+
 }

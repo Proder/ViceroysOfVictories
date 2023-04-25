@@ -1,17 +1,15 @@
 import React, { useState } from "react";
-import Navbar from "../components/UserNavbar";
+import Navbar from "../../components/UserNavbar";
 import { Navigate } from "react-router-dom";
 
-export default function Football() {
+export default function Badminton() {
   const [formData, setFormData] = useState({
     tot: "",
-    t1: "",
-    t2: "",
+    oname: "",
+    oid: "",
     s1: "",
     s2: "",
     wt: null,
-    goal:"",
-    
   });
 
   const handleInputChange = (event) => {
@@ -29,12 +27,11 @@ export default function Football() {
 
     var raw = JSON.stringify({
       tot: formData.tot,
-      t1: formData.t1,
-      t2: formData.t2,
+      oname: formData.oname,
+      oid: formData.oid,
       s1: formData.s1,
       s2: formData.s2,
       wt: formData.wt === "True" ? true : false,
-      goal: formData.goal
     });
 
     var requestOptions = {
@@ -44,26 +41,24 @@ export default function Football() {
       redirect: "follow",
     };
 
-    fetch("https://vov.cyclic.app/player/football/addmatch", requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-        if (result.hasOwnProperty('error')) {
-          window.alert(result.error);
-        } else {
-          window.alert(result.message);
-          setFormData({
-            tot: "",
-            t1: "",
-            t2: "",
-            s1: "",
-            s2: "",
-            wt: "",
-            goal: ""
-          });
-        }
-      })
-      .catch((error) => console.log("error", error));
+    fetch("https://vov.cyclic.app/player/tt/addmatch", requestOptions)
+    .then((response) => response.json())
+    .then((result) => {
+      console.log(result);
+      if(result.hasOwnProperty('error')){
+        window.alert(result.error)
+      }else{
+      window.alert("New Entry Done");
+      setFormData({
+        tot: "",
+        oname: "",
+        oid: "",
+        s1: "",
+        s2: "",
+        wt: "",
+      });
+    }})
+    .catch((error) => console.log("error", error));
   };
 
   return (
@@ -74,36 +69,35 @@ export default function Football() {
         <div className="container">
           <Navbar />
           <div className="details" id="info">
-            <h4 className="heading">Football</h4>
+            <h4 className="heading">Table Tennis</h4>
             <p className="paragraph">
-              Enter the details of your football matches
+              Enter the details of your table tennis matches
             </p>
             <div className="input-form-container">
               <form className="input-form">
                 <input
                   type="text"
-                  id="t1"
-                  placeholder="Your Team Name"
+                  id="oname"
+                  placeholder="Opponent Name"
                   className="input-field"
                   // autoComplete="off"
                   required
-                  value={formData.t1}
+                  value={formData.oname}
                   onChange={handleInputChange}
                 />
                 <input
                   type="text"
-                  id="t2"
-                  placeholder="Opponent Team Name"
+                  id="oid"
+                  placeholder="Opponent Student ID"
                   className="input-field"
-                  //autocomplete="off"
                   required
-                  value={formData.t2}
+                  value={formData.oid}
                   onChange={handleInputChange}
                 />
                 <input
                   type="text"
                   id="s1"
-                  placeholder="Your Team Goals"
+                  placeholder="Your Score"
                   className="input-field"
                   // autoComplete="off"
                   required
@@ -113,33 +107,27 @@ export default function Football() {
                 <input
                   type="text"
                   id="s2"
-                  placeholder="Opponent Team Goals"
+                  placeholder="Opponent Score"
                   className="input-field"
                   // autoComplete="off"
                   required
                   value={formData.s2}
                   onChange={handleInputChange}
                 />
-                <input
-                  type="number"
-                  id="goal"
-                  placeholder="Your Goals"
-                  className="input-field-extras"
-                  // autoComplete="off"
-                  value={formData.goal}
-                  onChange={handleInputChange}
-                />
-                <input
-                  type="text"
-                  id="wt"
-                  placeholder="Winning Team"
-                  className="input-field-extras"
-                  value={formData.wt}
-                  // autoComplete="off"
-                  onChange={handleInputChange}
-                />
                 <select
-                  className="select-field"
+                  className="select-field bad"
+                  id="wt"
+                  value={formData.wt}
+                  onChange={handleInputChange}
+                >
+                  <option value="" disabled selected>
+                    Winning Status
+                  </option>
+                  <option value="True">True</option>
+                  <option value="False">False</option>
+                </select>
+                <select
+                  className="select-field bad"
                   id="tot"
                   value={formData.tot}
                   onChange={handleInputChange}

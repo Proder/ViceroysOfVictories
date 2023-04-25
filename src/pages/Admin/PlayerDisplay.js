@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "./AdminDash.css";
-import Navbar from "../components/Navbar";
+
+import Navbar from "../../components/Navbar";
 import { useLocation } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
 export default function PlayerDisplay() {
   const [playerData, setPlayerData] = useState(null);
   const [isDataLoaded, setIsDataLoaded] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("cricket");
   const location = useLocation();
   const { id } = location?.state;
@@ -57,7 +56,6 @@ export default function PlayerDisplay() {
       .then((result) => {
         setPlayerData(result);
         setIsDataLoaded(true);
-        setIsLoading(false);
       })
       .catch((error) => console.log("error", error));
   }, [id]);
@@ -77,7 +75,7 @@ export default function PlayerDisplay() {
                     <header>
                       <a class="profile">
                         <img
-                          src={require("../assets/profile.jpg")}
+                          src={require("../../assets/profile.jpg")}
                           alt="Profile"
                         />
                       </a>

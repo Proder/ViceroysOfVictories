@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "./AdminDash.css";
-import Navbar from "../components/UserNavbar";
+import Navbar from "../../components/UserNavbar";
 import { Navigate, useNavigate } from "react-router-dom";
+
 
 export default function PlayerDash() {
   const [playerData, setPlayerData] = useState(null);
   const [isDataLoaded, setIsDataLoaded] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("cricket");
   const [sportsData, setSportsData] = useState([]);
   const navigate = useNavigate();
@@ -48,17 +47,13 @@ export default function PlayerDash() {
     switch (activeTab) {
       case "cricket":
         return navigate("/CRICKET");
-        break;
       case "football":
         return navigate("/Football");
-        break;
 
       case "badminton":
         return navigate("/Badminton");
-        break;
       case "tt":
         return navigate("/TT");
-        break;
     }
   };
 
@@ -92,7 +87,6 @@ export default function PlayerDash() {
       .then((result) => {
         setPlayerData(result);
         setIsDataLoaded(true);
-        setIsLoading(false);
       })
       .catch((error) => console.log("error", error));
   }, []);
@@ -112,7 +106,7 @@ export default function PlayerDash() {
                     <header>
                       <a class="profile">
                         <img
-                          src={require("../assets/profile.jpg")}
+                          src={require("../../assets/profile.jpg")}
                           alt="Profile"
                         />
                       </a>
@@ -205,6 +199,7 @@ export default function PlayerDash() {
                                   <th>Runs</th>
                                   <th>Wickets</th>
                                   <th>Tournament Type</th>
+                                  <th>Action</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -218,7 +213,8 @@ export default function PlayerDash() {
                                     <td>{cricket.wt}</td>
                                     <td>{cricket.run}</td>
                                     <td>{cricket.wicket}</td>
-                                    <td>{cricket.tot}<i class="fa-solid fa-trash" title="Delete Record" onClick={handleDelete(sportsData._id)}></i></td>
+                                    <td>{cricket.tot}</td>
+                                    <td><i class="fa-solid fa-trash" title="Delete Record" id="delete" onClick={handleDelete(sportsData._id)}></i></td>
                                   </tr>
                                 ))}
                               </tbody>
@@ -279,6 +275,7 @@ export default function PlayerDash() {
                                   <th>Score</th>
                                   <th>Winner</th>
                                   <th>Tournament Type</th>
+                                  <th>Action</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -294,6 +291,7 @@ export default function PlayerDash() {
                                         : badminton.oname}
                                     </td>
                                     <td>{badminton.tot}</td>
+                                    <td><i class="fa-solid fa-trash" title="Delete Record" id="delete" onClick={handleDelete(sportsData._id)}></i></td>
                                   </tr>
                                 ))}
                               </tbody>
@@ -351,6 +349,7 @@ export default function PlayerDash() {
                                   <th>Score</th>
                                   <th>Winner</th>
                                   <th>Tournament Type</th>
+                                  <th>Action</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -364,6 +363,7 @@ export default function PlayerDash() {
                                         : match.oname}
                                     </td>
                                     <td>{match.tot}</td>
+                                    <td><i class="fa-solid fa-trash" title="Delete Record" id="delete" onClick={handleDelete(sportsData._id)}></i></td>
                                   </tr>
                                 ))}
                               </tbody>
@@ -424,6 +424,7 @@ export default function PlayerDash() {
                                   <th>Winner</th>
                                   <th>Goals</th>
                                   <th>Tournament Type</th>
+                                  <th>Action</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -438,6 +439,7 @@ export default function PlayerDash() {
                                     </td>
                                     <td>{foot.goal}</td>
                                     <td>{foot.tot}</td>
+                                    <td><i class="fa-solid fa-trash" title="Delete Record" id="delete" onClick={handleDelete(sportsData._id)}></i></td>
                                   </tr>
                                 ))}
                               </tbody>

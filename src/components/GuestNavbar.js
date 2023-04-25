@@ -14,16 +14,16 @@ export default function Navbar() {
           <NavLink to="/PlayerDash" className="link">
             Home
           </NavLink>
-          <NavLink to="/CricketDisplay" className="link">
+          <NavLink to="/CricGuest" className="link">
             Cricket
           </NavLink>
-          <NavLink to="/CricketDisplay" className="link">
+          <NavLink to="/BadGuest" className="link">
             Badminton
           </NavLink>
-          <NavLink to="/TtDisplay" className="link">
+          <NavLink to="/TtGuest" className="link">
             TT
           </NavLink>
-          <NavLink to="/FootDisplay" className="link">
+          <NavLink to="/FootGuest" className="link">
             Football
           </NavLink>
           

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Navbar from "../components/UserNavbar";
+import Navbar from "../../components/UserNavbar";
 import { Navigate } from "react-router-dom";
 
 export default function CRICKET() {

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./dash.css";
 import { NavLink, Navigate } from "react-router-dom";
-import Footer from "../components/Footer"
-
+import Footer from "../components/Footer";
 
 export default function Dash() {
   const [isLogin, setIsLogin] = useState(true);
@@ -128,14 +127,13 @@ export default function Dash() {
         <div>
           {!isLoading ? (
             <div className="dash-container">
-              
               <div className="left">
-                <nav>
-                  <div className="title">
-                  <h1 >Viceroys of Victories</h1>
-                  </div>
-                </nav>
-
+                <div className="title-one">
+                  <h1>Viceroys of</h1>
+                </div>
+                <div className="title-two">
+                  <h2>VICTORY</h2>
+                </div>
               </div>
               <div className="right">
                 <div className="form-structor">
@@ -179,7 +177,9 @@ export default function Dash() {
                       Sign In
                     </button>
                     <div className="guest">
-                    <NavLink to="/GuestDash" className="link">Continue as Guest</NavLink>
+                      <NavLink to="/GuestDash" className="link-guest">
+                        Continue as Guest
+                      </NavLink>
                     </div>
                   </div>
 
@@ -223,7 +223,9 @@ export default function Dash() {
                       >
                         Sign In
                       </button>
-                      <NavLink to="/GuestDash" className="playlink">Continue as Guest</NavLink>
+                      <NavLink to="/GuestDash" className="playlink">
+                        Continue as Guest
+                      </NavLink>
                     </div>
                   </div>
                 </div>

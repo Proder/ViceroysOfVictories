@@ -1,15 +1,15 @@
-import "./App.css";
+import "./pages/AdminDash.css";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
-import Dash from "./pages/Dash";
-import AdminDash from "./pages/AdminDash";
-import NewUser from "./pages/NewUser";
-import PlayerDisplay from "./pages/PlayerDisplay";
-import PlayerDash from "./pages/PlayerDash";
-import Cricket from "./pages/CRICKET";
-import Badminton from "./pages/Badminton";
-import TT from "./pages/TT";
-import Football from "./pages/Football";
-import GuestDash from "./pages/GuestDash";
+import Dash from "./pages/Login";
+import AdminDash from "./pages/Admin/AdminDash";
+import NewUser from "./pages/Admin/NewUser";
+import PlayerDisplay from "./pages/Admin/PlayerDisplay";
+import PlayerDash from "./pages/Player/PlayerDash";
+import Cricket from "./pages/Player/CRICKET";
+import Badminton from "./pages/Player/Badminton";
+import TT from "./pages/Player/TT";
+import Football from "./pages/Player/Football";
+import GuestDash from "./pages/Guest/GuestDash";
 
 function App() {
   return (

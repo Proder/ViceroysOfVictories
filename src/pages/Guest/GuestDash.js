@@ -1,7 +1,6 @@
 import React from "react";
-import "./AdminDash.css";
-import Guestlist from "../components/Guestlist";
-import Navbar from "../components/GuestNavbar";
+import Guestlist from "../../components/Guestlist";
+import Navbar from "../../components/GuestNavbar";
 
 
 export default function GuestDash() {

@@ -1,9 +1,9 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 
-import "./AdminDash.css";
-import Cardlist from "../components/Cardlist";
-import Navbar from "../components/Navbar";
+
+import Cardlist from "../../components/Cardlist";
+import Navbar from "../../components/Navbar";
 
 
 export default function AdminDash() {
