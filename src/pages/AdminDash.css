@@ -487,3 +487,14 @@ td i{
   padding: 9px;
 
 }
+
+.update{
+  top: 1vw;
+  right: 0.75vw;
+  position: absolute;
+  z-index: 5;
+  font-size: 18px;
+  color: #2e2e30;
+}
+
+

@@ -1,13 +1,89 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../../components/UserNavbar";
 import { Navigate, useNavigate } from "react-router-dom";
+import "../Extras/dashboard.css";
 
 export default function PlayerDash() {
   const [playerData, setPlayerData] = useState(null);
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [activeTab, setActiveTab] = useState("cricket");
   const [sportsData, setSportsData] = useState([]);
+  const [buttonState, setButtonState] = useState(true);
   const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (buttonState) {
+      console.log("clicked");
+      setButtonState(false);
+    }
+  };
+  const [formData, setFormData] = useState({
+    oldpwd: "",
+    newpwd: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    var myHeaders = new Headers();
+    myHeaders.append("playerAuth", sessionStorage.getItem("playerAuth"));
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      oldpwd: formData.oldpwd,
+      newpwd: formData.newpwd,
+    });
+
+    // var raw = JSON.stringify({
+    //   height: playerData[0].height,
+    //   weight: playerData[0].weight,
+    // });
+
+    var requestOptions = {
+      method: "PATCH",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch("https://vov.cyclic.app/self/update/password", requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        window.alert(result.message);
+        setFormData({
+          oldpwd: "",
+          newpwd: "",
+        });
+        setButtonState(true);
+      })
+      .then(() => {
+        var myHeaders = new Headers();
+        myHeaders.append("playerAuth", sessionStorage.getItem("playerAuth"));
+
+        var requestOptions = {
+          method: "GET",
+          headers: myHeaders,
+          redirect: "follow",
+        };
+
+        fetch("https://vov.cyclic.app/player/logout", requestOptions)
+          .then((response) => response.text())
+          .then((result) => console.log(result))
+          .catch((error) => console.log("error", error));
+        sessionStorage.removeItem("playerAuth");
+        navigate("/");
+      })
+      .catch((error) => console.log("error", error));
+  };
+
   useEffect(() => {
     var myHeaders = new Headers();
     myHeaders.append("playerAuth", sessionStorage.getItem("playerAuth"));
@@ -134,6 +210,57 @@ export default function PlayerDash() {
                     </header>
 
                     <article>
+                      {/* <div className="update">
+                        <i
+                          class="fa-solid fa-user-pen"
+                          id="updateButton"
+                          title="Update Details"
+                        ></i>
+                      </div>
+                      <form onSubmit={handleUpdate}>
+                        <div className="updateForm">
+                          <label htmlFor="height">Height</label>
+                          <input
+                            type="number"
+                            name="height"
+                            id="height"
+                            value={playerData[0].height}
+                            onChange={(e) => {
+                              setPlayerData([
+                                {
+                                  ...playerData[0],
+                                  height: e.target.value,
+                                },
+                              ]);
+                            }}
+                          />
+                          <label htmlFor="weight">Weight</label>
+                          <input
+                            type="number"
+                            name="weight"
+                            id="weight"
+                            value={playerData[0].weight}
+                            onChange={(e) => {
+                              setPlayerData([
+                                {
+                                  ...playerData[0],
+                                  weight: e.target.value,
+                                },
+                              ]);
+                            }}
+                          />
+                        </div>
+                      </form>
+                      <div className="updateButton">
+                        <button
+                          onClick={handleUpdate}
+                          className="updateButton"
+                          type="submit"
+                        >
+                          Update
+                        </button>
+                      </div> */}
+
                       <h1>{playerData[0].name}</h1>
                       <h2>{playerData[0].email}</h2>
 
@@ -157,6 +284,44 @@ export default function PlayerDash() {
                         <div>
                           <span>{playerData[0].gender}</span>
                           <span>Gender</span>
+                        </div>
+                      </div>
+                      {/* Password updating */}
+                      <div className="Update">
+                        <div
+                          className={`button ${
+                            buttonState ? "button-state" : "card-state"
+                          }`}
+                          onClick={handleClick}
+                        >
+                          <div className="button-content">
+                            <i class="fa-solid fa-key"></i>
+                          </div>
+                          <div className="card-content">
+                            <input
+                              type="text"
+                              placeholder="Old"
+                              className="form-input"
+                              name="oldpwd"
+                              onChange={handleChange}
+                              value={formData.oldpwd}
+                            />
+                            <input
+                              type="password"
+                              placeholder="New"
+                              className="form-input"
+                              name="newpwd"
+                              onChange={handleChange}
+                              value={formData.newpwd}
+                            />
+                            <button
+                              className="signin-button"
+                              onClick={handleUpdate}
+                              id="updateButton"
+                            >
+                              Update
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </article>
