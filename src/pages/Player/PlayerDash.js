@@ -32,7 +32,6 @@ export default function PlayerDash() {
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    console.log(formData);
     var myHeaders = new Headers();
     myHeaders.append("playerAuth", sessionStorage.getItem("playerAuth"));
     myHeaders.append("Content-Type", "application/json");
@@ -57,31 +56,43 @@ export default function PlayerDash() {
     fetch("https://vov.cyclic.app/self/update/password", requestOptions)
       .then((response) => response.json())
       .then((result) => {
+        if(result.message=="Old password incorrect!"){
+          window.alert(result.message);
+          setButtonState(true);
+          return
+        }else{
         window.alert(result.message);
         setFormData({
           oldpwd: "",
           newpwd: "",
         });
         setButtonState(true);
-      })
-      .then(() => {
-        var myHeaders = new Headers();
-        myHeaders.append("playerAuth", sessionStorage.getItem("playerAuth"));
-
-        var requestOptions = {
-          method: "GET",
-          headers: myHeaders,
-          redirect: "follow",
-        };
-
-        fetch("https://vov.cyclic.app/player/logout", requestOptions)
-          .then((response) => response.text())
-          .then((result) => console.log(result))
-          .catch((error) => console.log("error", error));
-        sessionStorage.removeItem("playerAuth");
-        navigate("/");
+        handleLogOut();
+      }
       })
       .catch((error) => console.log("error", error));
+  };
+
+  const handleLogOut = () => {
+    var myHeaders = new Headers();
+    myHeaders.append("playerAuth", sessionStorage.getItem("playerAuth"));
+
+    var requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+
+    fetch(
+      "https://vov.cyclic.app/player/logout",
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+
+      sessionStorage.removeItem("playerAuth");
+
   };
 
   useEffect(() => {
