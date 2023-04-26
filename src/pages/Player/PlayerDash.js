@@ -304,6 +304,7 @@ export default function PlayerDash() {
                             buttonState ? "button-state" : "card-state"
                           }`}
                           onClick={handleClick}
+                          title="Update Password"
                         >
                           <div className="button-content">
                             <i class="fa-solid fa-key"></i>
@@ -311,15 +312,16 @@ export default function PlayerDash() {
                           <div className="card-content">
                             <input
                               type="text"
-                              placeholder="Old"
+                              placeholder="Old Password"
                               className="form-input"
                               name="oldpwd"
+                              autoComplete="off"
                               onChange={handleChange}
                               value={formData.oldpwd}
                             />
                             <input
                               type="password"
-                              placeholder="New"
+                              placeholder="New Password"
                               className="form-input"
                               name="newpwd"
                               onChange={handleChange}

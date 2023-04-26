@@ -68,7 +68,7 @@
   background: #ffffff;
   position: relative;
   top: 2.0vw;
-  left: 5.0vw;
+  left: 4.99vw;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
   border-radius: 100px;
   /* width: 20%; */
@@ -145,8 +145,8 @@
     height: 130px;
   }
   100% {
-    width: 180px;
-    height: 130px;
+    width: 190px;
+    height: 135px;
   }
 }
 @keyframes card-to-button {
