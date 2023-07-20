@@ -56,7 +56,7 @@ export default function PlayerDash() {
     fetch("https://vov.cyclic.app/self/update/password", requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        if(result.message=="Old password incorrect!"){
+        if(result.message==="Old password incorrect!"){
           window.alert(result.message);
           setButtonState(true);
           return
@@ -247,7 +247,7 @@ export default function PlayerDash() {
                           />
                           <label htmlFor="weight">Weight</label>
                           <input
-                            type="number"
+                            type="numr"
                             name="weight"
                             id="weight"
                             value={playerData[0].weight}

@@ -1,6 +1,6 @@
-import Card from "./GuestCard";
 import React, { useState, useEffect } from "react";
 import "../pages/AdminDash.css";
+import GuestCard from "./GuestCard";
 // import PlayerDisplay from "../pages/PlayerDisplay";
 
 export default function Guestlist() {
@@ -59,7 +59,7 @@ export default function Guestlist() {
         <section class="hero-section">
           <div class="card-grid">
           {cards.map((card) => (
-              <Card cardid={card._id} email={card.email} name={card.name} />
+              <GuestCard cardid={card._id} email={card.email} name={card.name} />
             ))}
           </div>
         </section>
