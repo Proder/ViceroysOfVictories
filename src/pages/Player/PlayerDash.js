@@ -53,7 +53,7 @@ export default function PlayerDash() {
       redirect: "follow",
     };
 
-    fetch("https://vov.cyclic.app/self/update/password", requestOptions)
+    fetch("https://viceroys-of-victory.onrender.com/self/update/password", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         if(result.message==="Old password incorrect!"){
@@ -84,7 +84,7 @@ export default function PlayerDash() {
     };
 
     fetch(
-      "https://vov.cyclic.app/player/logout",
+      "https://viceroys-of-victory.onrender.com/player/logout",
       requestOptions
     )
       .then((response) => response.text())
@@ -107,7 +107,7 @@ export default function PlayerDash() {
       try {
         // setIsDataLoaded(false)
         const response = await fetch(
-          `https://vov.cyclic.app/self/players/${activeTab}`,
+          `https://viceroys-of-victory.onrender.com/self/players/${activeTab}`,
           requestOptions
         );
         const data = await response.json();
@@ -153,7 +153,7 @@ export default function PlayerDash() {
       redirect: "follow",
     };
     fetch(
-      `https://vov.cyclic.app/self/players/delete/${activeTab}/${key}`,
+      `https://viceroys-of-victory.onrender.com/self/players/delete/${activeTab}/${key}`,
       requestOptions
     )
       .then((response) => response.json())
@@ -169,7 +169,7 @@ export default function PlayerDash() {
           headers: myHeaders,
           redirect: "follow",
         };
-        fetch("https://vov.cyclic.app/self/players/detail", requestOptions)
+        fetch("https://viceroys-of-victory.onrender.com/self/players/detail", requestOptions)
           .then((response) => response.json())
           .then((result) => {
             setPlayerData(result);
@@ -189,7 +189,7 @@ export default function PlayerDash() {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch("https://vov.cyclic.app/self/players/detail", requestOptions)
+    fetch("https://viceroys-of-victory.onrender.com/self/players/detail", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         setPlayerData(result);

@@ -41,7 +41,7 @@ export default function Badminton() {
       redirect: "follow",
     };
 
-    fetch("https://vov.cyclic.app/player/badminton/addmatch", requestOptions)
+    fetch("https://viceroys-of-victory.onrender.com/player/badminton/addmatch", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log(result);

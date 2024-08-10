@@ -23,7 +23,7 @@ export default function PlayerDisplay() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://easy-teal-dibbler-cape.cyclic.app/view/players/${activeTab}/${id}`,
+          `https://viceroys-of-victory.onrender.com/view/players/${activeTab}/${id}`,
           requestOptions
         );
         const data = await response.json();
@@ -49,7 +49,7 @@ export default function PlayerDisplay() {
       redirect: "follow",
     };
     fetch(
-      `https://easy-teal-dibbler-cape.cyclic.app/view/players/${id}`,
+      `https://viceroys-of-victory.onrender.com/view/players/${id}`,
       requestOptions
     )
       .then((response) => response.json())

@@ -25,7 +25,7 @@ export default function GuestDash() {
       try {
         setIsLoading(true);
         const response = await fetch(
-          `https://vov.cyclic.app/guest/view/players/${tab}`,
+          `https://viceroys-of-victory.onrender.com/guest/view/players/${tab}`,
           requestOptions
         );
         const data = await response.json();

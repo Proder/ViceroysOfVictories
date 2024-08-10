@@ -55,7 +55,7 @@ export default function Dash() {
     };
 
     fetch(
-      "https://easy-teal-dibbler-cape.cyclic.app/admin/login",
+      "https://viceroys-of-victory.onrender.com/admin/login",
       requestOptions
     )
       .then((response) => response.json())
@@ -97,7 +97,7 @@ export default function Dash() {
     };
 
     fetch(
-      "https://easy-teal-dibbler-cape.cyclic.app/player/login",
+      "https://viceroys-of-victory.onrender.com/player/login",
       requestOptions
     )
       .then((response) => response.json())

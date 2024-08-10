@@ -14,7 +14,7 @@ export default function Navbar() {
     };
 
     fetch(
-      "https://easy-teal-dibbler-cape.cyclic.app/admin/logout",
+      "https://viceroys-of-victory.onrender.com/admin/logout",
       requestOptions
     )
       .then((response) => response.text())

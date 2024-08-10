@@ -14,7 +14,7 @@ export default function Navbar() {
     };
 
     fetch(
-      "https://vov.cyclic.app/player/logout",
+      "https://viceroys-of-victory.onrender.com/player/logout",
       requestOptions
     )
       .then((response) => response.text())

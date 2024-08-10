@@ -46,7 +46,7 @@ export default function NewUser() {
       };
 
       fetch(
-        "https://easy-teal-dibbler-cape.cyclic.app/admin/setplayer",
+        "https://viceroys-of-victory.onrender.com/admin/setplayer",
         requestOptions
       )
         .then((response) => response.json())

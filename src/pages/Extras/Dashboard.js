@@ -52,7 +52,7 @@ export default function Dashboard() {
     };
 
     fetch(
-      "https://easy-teal-dibbler-cape.cyclic.app/admin/login",
+      "https://viceroys-of-victory.onrender.com/admin/login",
       requestOptions
     )
       .then((response) => response.json())

@@ -14,7 +14,7 @@ export default function Guestlist() {
       redirect: 'follow'
     };
     
-    fetch( `https://vov.cyclic.app/guest/search/players/${searchWord}`, requestOptions)
+    fetch( `https://viceroys-of-victory.onrender.com/guest/search/players/${searchWord}`, requestOptions)
       .then(response => response.json())
       .then(result => {
         setCards(result);
@@ -32,7 +32,7 @@ export default function Guestlist() {
       redirect: "follow",
     };
     fetch(
-      "https://easy-teal-dibbler-cape.cyclic.app/guest/view/players",
+      "https://viceroys-of-victory.onrender.com/guest/view/players",
       requestOptions
     )
       .then((response) => response.json())

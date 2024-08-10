@@ -44,7 +44,7 @@ export default function Football() {
       redirect: "follow",
     };
 
-    fetch("https://vov.cyclic.app/player/football/addmatch", requestOptions)
+    fetch("https://viceroys-of-victory.onrender.com/player/football/addmatch", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log(result);

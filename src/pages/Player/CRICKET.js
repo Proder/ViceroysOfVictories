@@ -45,7 +45,7 @@ export default function CRICKET() {
       redirect: "follow",
     };
 
-    fetch("https://vov.cyclic.app/player/cricket/addmatch", requestOptions)
+    fetch("https://viceroys-of-victory.onrender.com/player/cricket/addmatch", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         if (result.hasOwnProperty('error')) {

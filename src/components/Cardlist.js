@@ -19,7 +19,7 @@ export default function Cardlist() {
       redirect: 'follow'
     };
     
-    fetch(`https://easy-teal-dibbler-cape.cyclic.app/search/players/${searchWord}`, requestOptions)
+    fetch(`https://viceroys-of-victory.onrender.com/search/players/${searchWord}`, requestOptions)
       .then(response => response.json())
       .then(result => {
         console.log(result);
@@ -38,7 +38,7 @@ export default function Cardlist() {
       redirect: "follow",
     };
     fetch(
-      "https://easy-teal-dibbler-cape.cyclic.app/view/players",
+      "https://viceroys-of-victory.onrender.com/view/players",
       requestOptions
     )
       .then((response) => response.json())
